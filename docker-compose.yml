@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  backend-postgres:
+    container_name: virus_war-backend-postgres
+    image: postgres
+
+  backend-redis:
+    container_name: virus_war-backend-redis
+    image: redis
+
+  backend-app:
+    container_name: virus_war-backend-app
+    image: virus_war_server
+    build: backend/paper_games/
+    command: bash -c " python3 manage.py makemigrations &&  
+                       python3 manage.py migrate && 
+                       python3 manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend/paper_games:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - backend-postgres
+      - backend-redis
+
+  backend-test:
+    container_name: virus_war-backend-test
+    image: virus_war_server
+    build: backend/paper_games/
+    command: python3 manage.py test virus_war/tests
+    volumes:
+      - ./backend/paper_games:/code
+    depends_on:
+      - backend-app
+
+  frontend-app:
+    container_name: virus_war-frontend-app
+    image: virus_war_client
+    build: frontend/virus-war
+    command: bash -c "npm install &&
+                      npm run serve"
+    volumes:
+      - ./frontend/virus-war:/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend-app
