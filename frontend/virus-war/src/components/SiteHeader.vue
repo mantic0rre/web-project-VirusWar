@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     log_out(){
-      logout = false;
+      this.logout = false;
     }
   },
 }

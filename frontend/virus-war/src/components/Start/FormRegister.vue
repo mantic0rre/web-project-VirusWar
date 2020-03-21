@@ -42,10 +42,43 @@ export default {
     }
   },
   methods: {
-    signUp() {
+    registered() {
       this.is_registered = true;
-    }
-  },
+      this.username = '';
+      this.password = '';
+      this.password_repeat = '';
+    },
+    clearErrors() {
+      this.password_repeat_err = '';
+      this.non_field_errors = '';
+      this.username_errors = '';
+      this.password_errors = '';
+    },
+    signUp() { 
+      this.is_registered = false;
+      this.clearErrors();
+
+      if (this.password === this.password_repeat) {
+        let form = document.getElementById("form-register");
+        let form_data = new FormData(form);
+
+        // для отображения ошибки с пустым полем
+        for(let pair of form_data.entries()) {
+          pair[1] ? null: form_data.set([pair[0]], ' ');
+        }
+
+         this.$axios.post('/api/auth/users/', form_data)
+         .then(response => { this.registered(); 
+                             this.info = response.status; })
+         .catch(error => {let data = error.response.data;
+                          this.non_field_errors = data.non_field_errors ? data.non_field_errors.join(' ') : null;
+                          this.username_errors = data.username ? data.username.join(' ') : null;
+                          this.password_errors = data.password ? data.password.join(' ') : null; });
+      }
+      else
+        this.password_repeat_err = this.password_repeat ? 'Пароли не совпадают.' : 'Подтвердите пароль.';
+    },
+  }, 
 }
 </script>
 
