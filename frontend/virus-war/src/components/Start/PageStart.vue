@@ -9,7 +9,7 @@
     </div>
 
     <div class="forms">
-      <form-login />
+      <form-login @setusername='setusername'/>
       <form-register/>
     </div>    
     {{user}}
@@ -28,6 +28,15 @@ export default {
     FormRegister,
     SliderAnima, 
   },
+  
+  methods :{
+    setusername(username) {
+      this.$emit('sendusername', username);
+    }
+  },
+  created() {
+    this.$emit('sendusername', null);
+  }
 }
 </script>
 

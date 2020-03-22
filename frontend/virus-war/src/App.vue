@@ -2,7 +2,7 @@
   <div id="app">
     <site-header :user="username" @unreg="unreg" @modalShow="showModal"/>
     <main>
-      <router-view />
+      <router-view @sendusername="sendusername"/>
     </main>   
     <modal-rules v-show="isModalVisible" @close="closeModal"/> 
   </div>
@@ -27,6 +27,7 @@ export default {
   methods: {
     showModal() { this.isModalVisible = true; },
     closeModal() { this.isModalVisible = false; },
+    sendusername(username) { this.username = username},
   },
 }
 </script>

@@ -22,9 +22,27 @@ export default {
   },
   methods: {
     log_out(){
-      this.logout = false;
+      this.$axios.post('/api/auth/token/logout/');
+      localStorage.clear();  
+      delete this.$axios.defaults.headers.common["Authorization"];
+      this.$router.push({name: "root"});
     }
   },
+  watch: {
+    user: function () {
+      this.username = this.user;
+      if (this.user == null) this.logout= false;
+      else this.logout=true;
+    }
+  },
+  created() {
+    let elem = document.getElementById('start-page');
+    if (!elem) {
+      this.$axios.get('/api/auth/users/me/')
+        .then(response => ( this.username = response.data.username) )
+        .catch(error => {this.username = " ", this.info = error})
+    }
+  }
 }
 </script>
 
