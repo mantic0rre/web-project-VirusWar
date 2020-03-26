@@ -5,4 +5,6 @@ from virus_war.views import *
 urlpatterns = [
     path('users/',                         UserList.as_view()),
     path('users/<int:pk>/',                UserRetrieve.as_view()),
+    path('rooms/',                         RoomListCreate.as_view()),
+    path('rooms/<int:pk>/',                RoomRetrieveUpdateDestroy.as_view()),
 ]
