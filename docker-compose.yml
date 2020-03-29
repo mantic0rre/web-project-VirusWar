@@ -3,7 +3,10 @@ version: '3'
 services:
   backend-postgres:
     container_name: virus_war-backend-postgres
+
     image: postgres
+    environment:
+          POSTGRES_HOST_AUTH_METHOD: trust
 
   backend-redis:
     container_name: virus_war-backend-redis
@@ -24,16 +27,6 @@ services:
       - backend-postgres
       - backend-redis
 
-  backend-test:
-    container_name: virus_war-backend-test
-    image: virus_war_server
-    build: backend/paper_games/
-    command: python3 manage.py test virus_war/tests
-    volumes:
-      - ./backend/paper_games:/code
-    depends_on:
-      - backend-app
-
   frontend-app:
     container_name: virus_war-frontend-app
     image: virus_war_client
@@ -46,3 +39,15 @@ services:
       - "8080:8080"
     depends_on:
       - backend-app
+
+  backend-test:
+    container_name: virus_war-backend-test
+    image: virus_war_server
+    build: backend/paper_games/
+    command: python3 manage.py test virus_war/tests
+    volumes:
+      - ./backend/paper_games:/code
+    depends_on:
+      - backend-postgres
+      - backend-app
+
