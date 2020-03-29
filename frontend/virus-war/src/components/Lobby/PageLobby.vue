@@ -3,7 +3,7 @@
     <div id="tool-bar" >
 
     <div class="btns">
-      <button class='btn-room' >
+      <button class='btn-room' @click="ShowModal()">
         <p id="create-text">Создать <br />комнату</p>
         <img id="pen" src="../../assets/images/pen.png" height="40px"/>
       </button>
@@ -12,14 +12,27 @@
         <p v-else> Избранные<br /> комнаты</p>
       </button>
     </div>
+
+    <!-- 
+    <div class="checkboxes">
+      <label class="big_chk">
+          <input type="checkbox" id="empty" />
+          <span></span>
+          <div class="check-descrpt">Скрыть пустые комнаты </div>
+      </label>
+      <label class="big_chk">
+          <input type="checkbox" id="filled" />
+          <span></span>
+          <div class="check-descrpt"> Скрыть занятые комнаты </div>
+      </label>
+    </div>
+    -->
   
     <div class="search-block searches">
-      <input id="search-text" v-model="searchroom_form.search"> Поиск
+      <input id="search-text" v-model="searchroom_form.search" > Поиск
     </div>
-    <modal-create-room /> 
-    <modal-get-room-password :room="destinationroom" /> 
+    <modal-create-room v-show="isModalCreateVisible" @close="closeModal"/> 
   </div>
-
     <div v-show="false">
       {{info}} 
     </div>
@@ -27,27 +40,55 @@
 </template>
 
 <script>
+import ModalCreateRoom from './ModalCreateRoom.vue';
 
 export default {
   name: "PageLobby",
+  components:{
+    ModalCreateRoom,
+  },
   data () {
-    return {      
+    return {
+      rooms : [], 
       info: null, 
+      isModalCreateVisible: false,
       searchroom_form: {
+        hide_empty: false,
+        hide_busy: false, 
         starred: false,
         search: "",
       },
+      destinationroom: null
     }
   },
-  
+  methods: {
+    ShowModal() { this.isModalCreateVisible = true; },
+    closeModal() { this.isModalCreateVisible = false;  }, 
+    
+  }, 
+
 }
 </script>
 
 
 <style scoped>
-
+#rooms-list {
+  text-align: left;
+}
 #head-table {
   background-color: transparent;
+}
+.item {
+  background-color: rgba(20, 0, 255, 0.2);
+  border-radius: 200px 0px;
+  padding: 8px 0;
+  width: 96%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+.item:hover {
+  background: RoyalBlue;
 }
 .contain-row{
   display: flex;
@@ -56,14 +97,36 @@ export default {
   margin: 5px auto;
   
 }
-
+.busy {
+  color: SpringGreen;
+}
+.access {
+  margin-left: 3%;
+  width: 16%;
+}
+.name, .players, .size {
+  width: 28%;
+}
+.starred{
+  margin: auto;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
 @media (max-width: 800px) {
   .contain-row {
     width:90%;
     font-size: 90%;
   }
 }
-
+.star {
+  font-size: 150%;
+}
+.star:hover {
+  font-size: 200%;
+}
 .searches{
   cursor: pointer;
 }
@@ -78,7 +141,12 @@ export default {
   flex-direction: row;
   justify-content: space-between;
 }
-
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  width: 30%;
+}
 .btns {
   display: flex;
   flex-direction: row;
@@ -111,7 +179,31 @@ export default {
 img, p { 
   margin: auto;
 }
+.big_chk {
+  cursor: pointer;
+  margin: 0 auto 0 0;
+  font-size: 90%;
+  display: flex;
+  flex-direction: row;
+}
+.big_chk input {
+  padding: 0px;
+  margin-right:-16px;
+  visibility: hidden;
+}
+.big_chk input + span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url('../../assets/images/sprite.png') left/210%  no-repeat;
+}
+.big_chk input:checked+span {
+  background-position: right ;
+}
 
+.check-descrpt{
+  margin-left:1vh;
+}
 .search-block{
   width: 55%;
   margin: auto 0;
@@ -137,7 +229,7 @@ img, p {
     border-radius:  30px;
   }
 
-   .btns, .search-block {
+  .checkboxes, .btns, .search-block, .big_chk {
     width: 100%;
     margin-left: 10px;
     justify-content: center;

@@ -4,11 +4,13 @@ import VueRouter from 'vue-router'
 import axios from 'axios'
 
 import PageStart from '@/components/Start/PageStart'
+import PageLobby from '@/components/Lobby/PageLobby'
 
 
 const router = new VueRouter({
   routes: [
     { path: '/', name: 'root', component: PageStart},
+    { path: '/lobby/', name: 'lobby', component: PageLobby},
   ]
 })
 
