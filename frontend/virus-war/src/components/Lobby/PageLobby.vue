@@ -33,6 +33,31 @@
     </div>
     <modal-create-room v-show="isModalCreateVisible" @close="closeModal"/> 
   </div>
+    
+    <div id="rooms-list"> 
+      <div class="contain-row">
+        <div id="head-table" class="item">
+          <div class="access">Доступ </div>
+          <div class="name">Название</div>
+          <div class="players">Игроки </div>
+          <div class="size">Размер </div>
+        </div>
+      </div>
+
+      <div class="contain-row" v-for="room in rooms" :key="room.id">
+        <div class="item" >
+          <div class="access" v-if='room.password'> <img id="pen" src="../../assets/images/zamok.png" height="20px" /> </div>
+          <div class="access" v-else>  </div>
+          <div class="name"> {{room.name}} </div>
+          <div class="players"  :class="{busy: room.is_on}" > {{room.players}}/{{room.max_players}} </div>
+          <div class="size"> {{room.height}}x{{room.width}} </div>
+        </div>
+        <button class="starred" >
+          <div class="star" v-if="room.is_starred" > ★ </div>
+          <div class="star" v-else >  ☆ </div>
+        </button>
+      </div>
+    </div>
     <div v-show="false">
       {{info}} 
     </div>
