@@ -44,7 +44,10 @@ services:
     container_name: virus_war-backend-test
     image: virus_war_server
     build: backend/paper_games/
-    command: python3 manage.py test virus_war/tests
+    command:  bash -c " python3 manage.py makemigrations &&  
+                       python3 manage.py migrate && 
+                       python3 manage.py test virus_war/tests"
+
     volumes:
       - ./backend/paper_games:/code
     depends_on:
