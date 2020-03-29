@@ -7,7 +7,7 @@
         <p id="create-text">Создать <br />комнату</p>
         <img id="pen" src="../../assets/images/pen.png" height="40px"/>
       </button>
-      <button class='btn-room' >
+      <button class='btn-room' @click="getStarred()">
         <p v-if="searchroom_form.starred"> Все<br /> комнаты</p>
         <p v-else> Избранные<br /> комнаты</p>
       </button>
@@ -16,12 +16,12 @@
     <!-- 
     <div class="checkboxes">
       <label class="big_chk">
-          <input type="checkbox" id="empty" />
+          <input type="checkbox" id="empty" @change="hideEmpty()"/>
           <span></span>
           <div class="check-descrpt">Скрыть пустые комнаты </div>
       </label>
       <label class="big_chk">
-          <input type="checkbox" id="filled" />
+          <input type="checkbox" id="filled" @change="hideFilled()"/>
           <span></span>
           <div class="check-descrpt"> Скрыть занятые комнаты </div>
       </label>
@@ -29,7 +29,7 @@
     -->
   
     <div class="search-block searches">
-      <input id="search-text" v-model="searchroom_form.search" > Поиск
+      <input id="search-text" v-model="searchroom_form.search" @change="getRooms()"> Поиск
     </div>
     <modal-create-room v-show="isModalCreateVisible" @close="closeModal"/> 
   </div>
@@ -45,14 +45,14 @@
       </div>
 
       <div class="contain-row" v-for="room in rooms" :key="room.id">
-        <div class="item" >
+        <div class="item" v-on:click="GotoRoom(room)">
           <div class="access" v-if='room.password'> <img id="pen" src="../../assets/images/zamok.png" height="20px" /> </div>
           <div class="access" v-else>  </div>
           <div class="name"> {{room.name}} </div>
           <div class="players"  :class="{busy: room.is_on}" > {{room.players}}/{{room.max_players}} </div>
           <div class="size"> {{room.height}}x{{room.width}} </div>
         </div>
-        <button class="starred" >
+        <button class="starred" @click="AddDelStarred(room)">
           <div class="star" v-if="room.is_starred" > ★ </div>
           <div class="star" v-else >  ☆ </div>
         </button>
@@ -83,15 +83,75 @@ export default {
         starred: false,
         search: "",
       },
+      NeedInpPassword: false,
+      IsPasswordCorrect: false,
       destinationroom: null
     }
   },
   methods: {
-    ShowModal() { this.isModalCreateVisible = true; },
-    closeModal() { this.isModalCreateVisible = false;  }, 
-    
-  }, 
+    getRooms()
+    {
+      let querystr = "?" 
+      for (let q in this.searchroom_form)
+      {
+        if (querystr[querystr.height - 1] != "?")
+          querystr += "&";
+        if  (this.searchroom_form[q])
+          querystr += q + "=" + this.searchroom_form[q];
+      }
+      this.$axios.get('/api/rooms/' + querystr)
+      .then(response => (
+        this.info = response.data, 
+        this.rooms = response.data
+      ));
 
+    },
+    getStarred()
+    {
+      this.searchroom_form.starred = !this.searchroom_form.starred;
+      this.getRooms();
+    }, 
+    ShowModal() { this.isModalCreateVisible = true; },
+    closeModal() { this.getRooms(); this.isModalCreateVisible = false;  }, 
+    hideEmpty() 
+    { 
+      this.searchroom_form.hide_empty = !this.searchroom_form.hide_empty;
+      this.getRooms();
+    },
+    hideFilled() 
+    {
+      this.searchroom_form.hide_busy = !this.searchroom_form.hide_busy;
+      this.getRooms(); 
+    },
+    AddDelStarred(room) {
+      this.info = room;
+      if ( room.is_starred)
+      {
+        this.$axios.delete('/api/starred/' + room.id)
+        .then(response => (this.info = response.data))
+        .catch(error => (this.info = error));
+      }
+      else
+      {
+        let body = {"room": room.id};
+        this.$axios.post('/api/starred/', body)
+        .then(response => (this.info = response.data))
+        .catch(error => (this.info = error));
+      }
+      room.is_starred = !room.is_starred;
+    },
+    GotoRoom(room){ 
+      this.destinationroom = room;
+      this.info = "hello" + room;
+        
+      
+      
+    }
+  }, 
+  created() {
+    this.getRooms();
+    
+  }
 }
 </script>
 

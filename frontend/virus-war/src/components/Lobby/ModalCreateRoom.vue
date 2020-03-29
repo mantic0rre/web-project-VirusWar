@@ -20,7 +20,7 @@
       <section class="modal-body">
         <slot name="body">
           
-            <form id="form-create-room" >
+            <form id="form-create-room" @submit.prevent="CreateRoom()">
                 <div class="form-text"> Название комнаты: </div>
                 <base-input type="text" name="name"/>
                 <div class="auth-error"> {{ roomname_errors }} </div> 
@@ -84,7 +84,32 @@ import BaseInput from '../BaseInput.vue'
       close() {
         this.$emit('close');
       },
-      
+      CreateRoom() {
+      let form = document.getElementById("form-create-room");
+      let form_data = new FormData(form);
+      // для отображения ошибки с пустым полем
+      for(let pair of form_data.entries()) {
+        pair[1] ? null: form_data.set([pair[0]], ' ');
+        if (pair[0] === "size")
+        {
+          form_data.append("height", pair[1].slice(0, 2));
+          form_data.append("width", pair[1].slice(5));
+        }
+      }      
+      form_data.delete("size");
+      this.$axios.post('/api/rooms/', form_data)
+      .then(response => ( this.info = response, this.$emit('close') ))
+      .catch(error => {
+        this.info = error.response; 
+        let data = error.response.data;
+        this.non_field_errors = data.non_field_errors ? data.non_field_errors.join(' ') : null;
+        this.roomname_errors = data.name ? data.name.join(' ') : null;
+        this.maxplayers_errors = data.max_players ? data.max_players.join(' ') : null;
+        this.length_errors = data.height ? data.height.join(' ') : null;
+        this.width_errors = data.width ? data.width.join(' ') : null;
+        this.password_errors = data.name ? data.name.join(' ') : null;
+        });
+      }
     }
   };
 </script>
