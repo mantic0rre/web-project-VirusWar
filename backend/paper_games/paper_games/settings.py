@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
-#    'channels',
+    'channels',
     'virus_war',
 ]
 
@@ -75,7 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'paper_games.wsgi.application'
-#ASGI_APPLICATION = "paper_games.routing.application"
+ASGI_APPLICATION = "paper_games.routing.application"
 
 CHANNEL_LAYERS = {
     'default': {
