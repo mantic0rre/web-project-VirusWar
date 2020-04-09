@@ -32,6 +32,7 @@
       <input id="search-text" v-model="searchroom_form.search" @change="getRooms()"> Поиск
     </div>
     <modal-create-room v-show="isModalCreateVisible" @close="closeModal"/> 
+    <modal-get-room-password :room="destinationroom" v-show="NeedInpPassword" @closePasswordCheck="closePasswordCheck"/> 
   </div>
     
     <div id="rooms-list"> 
@@ -66,11 +67,13 @@
 
 <script>
 import ModalCreateRoom from './ModalCreateRoom.vue';
+import ModalGetRoomPassword from './ModalGetRoomPassword.vue';
 
 export default {
   name: "PageLobby",
   components:{
     ModalCreateRoom,
+    ModalGetRoomPassword
   },
   data () {
     return {
@@ -102,8 +105,11 @@ export default {
       this.$axios.get('/api/rooms/' + querystr)
       .then(response => (
         this.info = response.data, 
-        this.rooms = response.data
-      ));
+        this.rooms = response.data))
+      .catch(error => { 
+          if(error.response.status == 401) 
+            this.$router.push({name: "root"});
+      });
 
     },
     getStarred()
@@ -113,6 +119,15 @@ export default {
     }, 
     ShowModal() { this.isModalCreateVisible = true; },
     closeModal() { this.getRooms(); this.isModalCreateVisible = false;  }, 
+    showPasswordCheck() { this.NeedInpPassword = true }, 
+    closePasswordCheck(res) {
+      this.NeedInpPassword = false; 
+      this.IsPasswordCorrect = res;
+      if (this.IsPasswordCorrect === true)
+      {
+        this.$router.push({path: '/room/' + this.destinationroom.id})
+      }
+    },
     hideEmpty() 
     { 
       this.searchroom_form.hide_empty = !this.searchroom_form.hide_empty;
@@ -142,10 +157,15 @@ export default {
     },
     GotoRoom(room){ 
       this.destinationroom = room;
+      if (room.password )
+        this.showPasswordCheck();
+
       this.info = "hello" + room;
+      if (this.IsPasswordCorrect === true || room.password === '')
+      {
         
-      
-      
+        this.$router.push({path: '/room/' + room.id})
+      }
     }
   }, 
   created() {
