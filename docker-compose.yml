@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   backend-postgres:
@@ -6,8 +6,9 @@ services:
 
     image: postgres
     environment:
-          POSTGRES_HOST_AUTH_METHOD: trust
-
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+          - POSTGRES_DB=my_db
   backend-redis:
     container_name: virus_war-backend-redis
     image: redis
@@ -16,8 +17,9 @@ services:
     container_name: virus_war-backend-app
     image: virus_war_server
     build: backend/paper_games/
-    command: bash -c " python3 manage.py makemigrations &&  
-                       python3 manage.py migrate --run-syncdb && 
+    command: bash -c " 
+                       python3 manage.py makemigrations &&  
+                       python3 manage.py migrate && 
                        python3 manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend/paper_games:/code
@@ -45,7 +47,7 @@ services:
     image: virus_war_server
     build: backend/paper_games/
     command:  bash -c " python3 manage.py makemigrations &&  
-                       python3 manage.py migrate --run-syncdb && 
+                       python3 manage.py migrate  && 
                        python3 manage.py test virus_war/tests"
 
     volumes:
