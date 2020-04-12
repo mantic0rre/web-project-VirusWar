@@ -20,6 +20,9 @@ Vue.prototype.$axios = axios.create({
   baseURL:  'http://0.0.0.0:8000' // 
 })
 
+Vue.prototype.$ws =  'ws://0.0.0.0:8000/ws' // 
+
+
 if (localStorage.getItem('auth_token')) {
   Vue.prototype.$axios.defaults.headers.common['Authorization'] = "Token " + localStorage.getItem('auth_token');
 }

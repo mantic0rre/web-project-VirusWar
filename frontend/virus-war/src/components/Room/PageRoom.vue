@@ -38,7 +38,19 @@
             
             </div>
             <div id="chat">
-                
+                <form class="chat-form" @submit.prevent="SendMSG()">
+                    <input v-model="message"/>
+                    <button id="send-btn"> Отправить </button>
+                </form>
+                <div id="msg-area">
+                    <div class="msg" v-for="m in hist_messages" :key="m.id">
+                    <div class="msg-prop"> 
+                        <div class="msg-user"> {{m.user}} </div> 
+                        <div class="msg-datetime"> {{m.datetime}} </div> 
+                    </div>
+                    <div class="msg-content"> {{m.content}} </div>
+                    </div>
+                </div>
             </div>
             <div id="players">
                 Игроки
@@ -65,13 +77,23 @@ export default {
       chat_socket: WebSocket, 
       game_message: "Выберите позицию", 
       username: null, 
+      hist_messages: [],
       }
     },
     methods : {
         GotoLobby() {
             this.$router.push({name: "lobby"});
         },
-        
+        SendMSG() {
+            if (!(this.message === ""))
+            {
+                this.chat_socket.send(JSON.stringify({
+                    'type': 'chat',
+                    'content': this.message
+                }));
+                this.message = '';
+            }
+        },
         create_board() {
             this.battlefield = [];
             for (let n = 0; n < this.room.height; n++) {
@@ -84,7 +106,38 @@ export default {
                     
               }
           } 
-        }
+        },
+        websocket_connection() {
+          this.chat_socket = new WebSocket(this.$ws + '/room/' + this.$route.params.id + '/' );
+          
+          this.chat_socket.onopen = e =>  {
+            this.info += "ws подключено" + e;
+            let auth_data = {  'type': 'auth',
+                                'token': localStorage.getItem('auth_token') }
+            this.chat_socket.send(JSON.stringify(auth_data));
+
+            this.$axios.get('/api/messages-room/' + this.$route.params.id )
+            .then(response => {
+                this.hist_messages = response.data;
+            })
+            .catch()
+          };
+          
+          this.chat_socket.onclose = eventclose => {
+            this.info += 'соеденение закрыто причина: ' + eventclose
+          };
+          this.chat_socket.onmessage = msg => {
+            this.info += 'Сообщение ' + msg.data ;
+           
+            let data = JSON.parse(msg.data);
+
+            if (data.type === "chat")
+            {
+                this.hist_messages.unshift({'user': data.user,'datetime': data.datetime,  'content': data.content});
+            } 
+          };
+        },
+
     },
     beforeCreate() 
     {
@@ -97,7 +150,7 @@ export default {
 
           this.create_board();
           
-        
+          this.websocket_connection();
       })
       .catch(error => { 
           if(error.response.status == 401) 
@@ -111,6 +164,9 @@ export default {
             this.$router.push({name: "root"});
       });
     },
+    destroyed(){
+        this.chat_socket.close();
+    }    
 }
 </script>
 
@@ -201,6 +257,59 @@ margin: 2vh 5vh;
     margin: 1vh;
 }
 
+.chat-form{
+    align-items: flex-end;
+}
+input{
+  background-color: white;
+  border: 0px;
+  border-radius: 100px 100px 0px 100px;
+  margin: 0% 0% 2% 0;
+  padding: 0% 2%;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  width: 80%;
+  min-width: 100px;
+  height:35px;
+  outline: none;
+}
+#send-btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+#msg-area{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+    margin-left: 2%;
+    font-size: 90%;
+}
+.msg-prop {
+    text-align: left;
+    
+    display: flex;
+    flex-direction: row;
+}
+.msg-content {
+    text-align: left;
+    background-color: transparent;
+    margin-bottom: 2%;
+    
+}
+.msg-content, .msg-prop
+{
+    border-radius: 100px 100px 100px 100px;
+}
+.msg-user{
+    color: Navy;
+    margin: 0 1% 0 0;
+}
+.msg-datetime {
+    color: Gainsboro;
+    font-size: 80%;
+    margin: auto 0;
+}
 
 @media (max-width: 650px) {
     
@@ -221,3 +330,4 @@ margin: 2vh 5vh;
 }
 
 </style>
+
