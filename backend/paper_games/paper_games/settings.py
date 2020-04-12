@@ -99,29 +99,29 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # local DB
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'mydatabase'
     }
 }
-
-
 '''
+
 # docker container DB
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
         'HOST': 'backend-postgres',
-
-        
+        'PORT': 5432,
+        'TEST': {
+            'NAME': os.path.join(BASE_DIR, 'db_test.sqlite3')
+        }
     }
 }
-'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
