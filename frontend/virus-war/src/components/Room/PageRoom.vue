@@ -84,7 +84,16 @@ export default {
         GotoLobby() {
             this.$router.push({name: "lobby"});
         },
-        
+        SendMSG() {
+            if (!(this.message === ""))
+            {
+                this.chat_socket.send(JSON.stringify({
+                    'type': 'chat',
+                    'content': this.message
+                }));
+                this.message = '';
+            }
+        },
         create_board() {
             this.battlefield = [];
             for (let n = 0; n < this.room.height; n++) {
@@ -97,7 +106,38 @@ export default {
                     
               }
           } 
-        }
+        },
+        websocket_connection() {
+          this.chat_socket = new WebSocket(this.$ws + '/room/' + this.$route.params.id + '/' );
+          
+          this.chat_socket.onopen = e =>  {
+            this.info += "ws подключено" + e;
+            let auth_data = {  'type': 'auth',
+                                'token': localStorage.getItem('auth_token') }
+            this.chat_socket.send(JSON.stringify(auth_data));
+
+            this.$axios.get('/api/messages-room/' + this.$route.params.id )
+            .then(response => {
+                this.hist_messages = response.data;
+            })
+            .catch()
+          };
+          
+          this.chat_socket.onclose = eventclose => {
+            this.info += 'соеденение закрыто причина: ' + eventclose
+          };
+          this.chat_socket.onmessage = msg => {
+            this.info += 'Сообщение ' + msg.data ;
+           
+            let data = JSON.parse(msg.data);
+
+            if (data.type === "chat")
+            {
+                this.hist_messages.unshift({'user': data.user,'datetime': data.datetime,  'content': data.content});
+            } 
+          };
+        },
+
     },
     beforeCreate() 
     {
@@ -110,7 +150,7 @@ export default {
 
           this.create_board();
           
-        
+          this.websocket_connection();
       })
       .catch(error => { 
           if(error.response.status == 401) 
@@ -124,6 +164,9 @@ export default {
             this.$router.push({name: "root"});
       });
     },
+    destroyed(){
+        this.chat_socket.close();
+    }    
 }
 </script>
 
