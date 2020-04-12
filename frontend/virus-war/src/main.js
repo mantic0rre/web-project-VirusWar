@@ -5,19 +5,20 @@ import axios from 'axios'
 
 import PageStart from '@/components/Start/PageStart'
 import PageLobby from '@/components/Lobby/PageLobby'
+import PageRoom from '@/components/Room/PageRoom'
 
 
 const router = new VueRouter({
   routes: [
     { path: '/', name: 'root', component: PageStart},
-    { path: '/lobby/', name: 'lobby', component: PageLobby},
+    { path: '/lobby', name: 'lobby', component: PageLobby },
+    { path: '/room/:id', name: 'room', component: PageRoom, props: true },
   ]
 })
 
 Vue.prototype.$axios = axios.create({
-  baseURL: 'http://0.0.0.0:8000' // 
+  baseURL:  'http://0.0.0.0:8000' // 
 })
-
 
 if (localStorage.getItem('auth_token')) {
   Vue.prototype.$axios.defaults.headers.common['Authorization'] = "Token " + localStorage.getItem('auth_token');
