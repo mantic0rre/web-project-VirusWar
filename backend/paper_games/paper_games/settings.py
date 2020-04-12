@@ -99,15 +99,15 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # local DB
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'mydatabase'
     }
 }
-'''
 
+'''
 # docker container DB
 DATABASES = {
     'default': {
@@ -121,7 +121,7 @@ DATABASES = {
         }
     }
 }
-
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
