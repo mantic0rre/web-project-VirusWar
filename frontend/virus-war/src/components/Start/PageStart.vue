@@ -32,10 +32,16 @@ export default {
   methods :{
     setusername(username) {
       this.$emit('sendusername', username);
+    },
+    log_out(){
+      this.$axios.post('/api/auth/token/logout/');
+      localStorage.clear();  
+      delete this.$axios.defaults.headers.common["Authorization"];
     }
   },
   created() {
     this.$emit('sendusername', null);
+    this.log_out();
   }
 }
 </script>

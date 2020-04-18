@@ -22,9 +22,6 @@ export default {
   },
   methods: {
     log_out(){
-      this.$axios.post('/api/auth/token/logout/');
-      localStorage.clear();  
-      delete this.$axios.defaults.headers.common["Authorization"];
       this.$router.push({name: "root"});
     }
   },
