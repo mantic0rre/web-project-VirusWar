@@ -105,12 +105,47 @@ export default {
       this.$axios.get('/api/rooms/' + querystr)
       .then(response => (
         this.info = response.data, 
-        this.rooms = response.data))
+        this.rooms = response.data, 
+        this.websocket_connection()))
       .catch(error => { 
           if(error.response.status == 401) 
             this.$router.push({name: "root"});
       });
 
+    },
+    update_rooms_info(fullrooms) {
+      for (let m in this.rooms) {
+        let room_id = this.rooms[m].id;
+        if (fullrooms[room_id]){
+          this.rooms[m].players = fullrooms[room_id].number_of_players;
+          this.rooms[m].is_on = fullrooms[room_id].game_is_on;
+        }
+        else 
+          this.rooms[m].players = 0;
+      }
+    },
+    add_room_info(id, is_on, players_numb){
+      this.info = " - " + id + " " + is_on + " " + players_numb;
+      for (let m in this.rooms) {
+        if (this.rooms[m].id == id){
+          this.rooms[m].players = players_numb;
+          this.rooms[m].is_on = is_on;  
+        }
+      }
+    },
+    websocket_connection(){
+      this.chat_socket = new WebSocket(this.$ws + '/lobby/');
+        this.chat_socket.onopen = e =>  {
+          this.info ="содединение"+ e; 
+        };
+        this.chat_socket.onmessage = msg => { 
+          let data = JSON.parse(msg.data);
+          this.info = "msg"+ data.type ;
+          if (data.type == "games_info"){
+            this.update_rooms_info(data.data); 
+          }
+          else  this.add_room_info(data.room_id, data.game_is_on, data.number_of_players);
+        };
     },
     getStarred()
     {
