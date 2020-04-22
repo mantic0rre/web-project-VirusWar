@@ -1,10 +1,11 @@
+"""Модуль для описания классов-посреников для запросов (middleware).
+"""
 from channels.auth import AuthMiddlewareStack
 from django.contrib.auth.models import AnonymousUser
 
 
 class TokenAuthMiddleware:
-    """
-    Token authorization middleware for Django Channels 2
+    """Класс-посредник для авторизации с помощью токена в Django Channels 2, используемый в модуле routing.py.
     """
     def __init__(self, inner):
         self.inner = inner

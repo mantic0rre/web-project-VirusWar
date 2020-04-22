@@ -8,9 +8,15 @@ from virus_war.game.game_engine import *
 
 
 class RoomConsumer(JsonWebsocketConsumer):
+    """Обмен сообщениями по WebSocket в отдельной комнате.
+
+    Сообщения отправляются и принимаются в формате json. Существует столько групп пользователей, сколько комнат.
+    """
     lobby_group_name = 'lobby'
 
     def connect(self):
+        """Добавление пользователя в группу конкретной комнаты. Установление соединения. Отправка состояния игры.
+        """
         self.room_id = self.scope['url_route']['kwargs']['room_id']
         self.room_group_name = 'room_%s' % self.room_id
         self.user = self.scope["user"]
@@ -34,6 +40,8 @@ class RoomConsumer(JsonWebsocketConsumer):
             })
 
     def disconnect(self, close_code):
+        """Вызывается, когда закрывается соединение.
+        """
         async_to_sync(self.channel_layer.group_discard)(
             self.room_group_name,
             self.channel_name
@@ -43,6 +51,8 @@ class RoomConsumer(JsonWebsocketConsumer):
             self.util_game_info_to_lobby(state)
 
     def receive_json(self, content, **kwargs):
+        """Получение сообщений от frontend.
+        """
         msg_type = content['type']
         print(content)
 
@@ -55,7 +65,7 @@ class RoomConsumer(JsonWebsocketConsumer):
             self.user = self.scope['user']
             return
 
-        # === Next types require authorization ===
+        # === Следующие типы требуют авторизации ===
         if isinstance(self.scope['user'], AnonymousUser):
             self.close()
             return
@@ -72,7 +82,7 @@ class RoomConsumer(JsonWebsocketConsumer):
                 })
             return
 
-         # === Game ===
+        # === Игра ===
         state = None
         if msg_type == 'readiness':
             figure = content['figure']
@@ -116,7 +126,7 @@ class RoomConsumer(JsonWebsocketConsumer):
 
         self.util_game_info_to_lobby(state)
 
-    # === Utility ===
+    # ~~~~~ Вспомогательные функции (утилиты) ~~~~~
 
     def util_remove_player(self):
         state = GameEngine.remove_player(self.room.id, self.user.username)
@@ -145,7 +155,7 @@ class RoomConsumer(JsonWebsocketConsumer):
                     'number_of_players': number_of_players
                 })
 
-    # === Send to all ===
+    # ~~~~~ Отправка всем пользователям ~~~~~
 
     def chat(self, event):
         self.send_json(

@@ -1,7 +1,8 @@
 __pycache__
+*.pyc
 .idea
 .venv
-*.pyc
+/venv
 chromedriver.exe
 htmlcov
 .coverage

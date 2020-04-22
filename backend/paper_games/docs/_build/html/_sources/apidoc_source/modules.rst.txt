@@ -1,0 +1,9 @@
+paper_games
+===========
+
+.. toctree::
+   :maxdepth: 4
+
+   manage
+   paper_games
+   virus_war

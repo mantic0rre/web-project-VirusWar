@@ -1,22 +1,27 @@
+"""Корневая конфигурация маршрутизации для HTTP-запросов.
+
+Examples:
+    Для авторизации используется библиотека djoser.
+    \n Доступные конечные точки для api/auth/ :
+    \n /users/
+    \n /users/me/
+    \n /users/confirm/
+    \n /users/resend_activation/
+    \n /users/set_password/
+    \n /users/reset_password/
+    \n /users/reset_password_confirm/
+    \n /users/set_username/
+    \n /users/reset_username/
+    \n /users/reset_username_confirm/
+    \n /token/login/ (Token Based Authentication)
+    \n /token/logout/ (Token Based Authentication)
+
+Подробнее: https://djoser.readthedocs.io/en/latest/getting_started.html
+"""
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 
-
-""" Available endpoints for api/auth/
-/users/
-/users/me/
-/users/confirm/
-/users/resend_activation/
-/users/set_password/
-/users/reset_password/
-/users/reset_password_confirm/
-/users/set_username/
-/users/reset_username/
-/users/reset_username_confirm/
-/token/login/ (Token Based Authentication)
-/token/logout/ (Token Based Authentication)
-"""
 
 urlpatterns = [
     path('admin/',      admin.site.urls),
