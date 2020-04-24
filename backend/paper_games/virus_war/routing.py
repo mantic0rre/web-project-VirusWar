@@ -1,3 +1,5 @@
+"""Маршрутизация для WebSocket.
+"""
 from django.urls import re_path
 from virus_war.consumers import RoomConsumer, LobbyConsumer
 

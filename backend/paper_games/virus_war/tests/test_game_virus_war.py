@@ -1,3 +1,5 @@
+"""Тестирование логики игры (класс VirusWar).
+"""
 from django.test import TestCase
 import numpy as np
 from virus_war.game import VirusWar
@@ -63,11 +65,12 @@ class GetNeighboringCells(TestCase):
 
 class ConnectedChainIsNearby(TestCase):
     def setUp(self):
-        '''
-        Do not change numbers and sizes!
-        First number in 'figure_order' is current figure.
-        Number -1 in board means testable position (optional)
-        '''
+        """
+        Note:
+            Количество игроков и размеры доски влияют на результат тестов!
+            Первое число в figure_order - текущая фигура.
+            Число -1 на доске обозначает тестируемую позицию (для наглядности)
+        """
         h, w = 5, 5
         figure_order = np.array([2, 1, 3])
         self.game = VirusWar(h, w, figure_order)

@@ -87,7 +87,8 @@
 <dl class="py method">
 <dt id="virus_war.consumers.room_consumer.RoomConsumer.chat">
 <code class="sig-name descname">chat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.consumers.room_consumer.RoomConsumer.chat" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Отправка информации о чате.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.consumers.room_consumer.RoomConsumer.connect">
@@ -109,7 +110,8 @@
 <dl class="py method">
 <dt id="virus_war.consumers.room_consumer.RoomConsumer.readiness">
 <code class="sig-name descname">readiness</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.consumers.room_consumer.RoomConsumer.readiness" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Отправка информации о готовых игроках.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.consumers.room_consumer.RoomConsumer.receive_json">
@@ -120,34 +122,44 @@
 <dl class="py method">
 <dt id="virus_war.consumers.room_consumer.RoomConsumer.remove_player">
 <code class="sig-name descname">remove_player</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.consumers.room_consumer.RoomConsumer.remove_player" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Отправка информации об игре после того, как пользователь покинул игру.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.consumers.room_consumer.RoomConsumer.start">
 <code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.consumers.room_consumer.RoomConsumer.start" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Отправка информации о начале игры.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.consumers.room_consumer.RoomConsumer.take_move">
 <code class="sig-name descname">take_move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.consumers.room_consumer.RoomConsumer.take_move" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Отправка информации об игре после сделанного хода игрока.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.consumers.room_consumer.RoomConsumer.util_game_info_to_lobby">
 <code class="sig-name descname">util_game_info_to_lobby</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.consumers.room_consumer.RoomConsumer.util_game_info_to_lobby" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Отправка обновления в лобби.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>state</strong> (<a class="reference internal" href="virus_war.game.html#virus_war.game.game_engine.State" title="virus_war.game.game_engine.State"><em>State</em></a>) – пользовательский тип для хранения данных о состоянии игры.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.consumers.room_consumer.RoomConsumer.util_remove_player">
 <code class="sig-name descname">util_remove_player</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.consumers.room_consumer.RoomConsumer.util_remove_player" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Удаление пользователя из списка игроков. Отправка обновленного состояния игры в комнату.</p>
+</dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-virus_war.consumers">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-virus_war.consumers" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Классы для обмена данными по протоколу WebSocket</p>
+<p>Пакет классов для обмена данных по протоколу WebSocket.</p>
 </div>
 </div>
 
@@ -185,6 +197,7 @@
 <li class="toctree-l4"><a class="reference internal" href="virus_war.game.html">virus_war.game package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="virus_war.models.html">virus_war.models package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="virus_war.serializers.html">virus_war.serializers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.tests.html">virus_war.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="virus_war.views.html">virus_war.views package</a></li>
 </ul>
 </li>

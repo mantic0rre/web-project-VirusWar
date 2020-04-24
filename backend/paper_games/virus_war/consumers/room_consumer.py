@@ -129,6 +129,8 @@ class RoomConsumer(JsonWebsocketConsumer):
     # ~~~~~ Вспомогательные функции (утилиты) ~~~~~
 
     def util_remove_player(self):
+        """Удаление пользователя из списка игроков. Отправка обновленного состояния игры в комнату.
+        """
         state = GameEngine.remove_player(self.room.id, self.user.username)
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
@@ -141,6 +143,11 @@ class RoomConsumer(JsonWebsocketConsumer):
         return state
 
     def util_game_info_to_lobby(self, state):
+        """Отправка обновления в лобби.
+
+        Args:
+            state (State): пользовательский тип для хранения данных о состоянии игры.
+        """
         dirty = state.dict['data'].get('dirty')
         if dirty:
             code = state.dict['code']
@@ -158,6 +165,8 @@ class RoomConsumer(JsonWebsocketConsumer):
     # ~~~~~ Отправка всем пользователям ~~~~~
 
     def chat(self, event):
+        """Отправка информации о чате.
+        """
         self.send_json(
         {
             'type': event["type"],
@@ -167,6 +176,8 @@ class RoomConsumer(JsonWebsocketConsumer):
         })
 
     def readiness(self, event):
+        """Отправка информации о готовых игроках.
+        """
         self.send_json(
         {
             'type': event["type"],
@@ -174,6 +185,8 @@ class RoomConsumer(JsonWebsocketConsumer):
         })
 
     def start(self, event):
+        """Отправка информации о начале игры.
+        """
         self.send_json(
         {
             'type': event["type"],
@@ -182,6 +195,8 @@ class RoomConsumer(JsonWebsocketConsumer):
         })
 
     def take_move(self, event):
+        """Отправка информации об игре после сделанного хода игрока.
+        """
         self.send_json(
         {
             'type': event['type'],
@@ -195,6 +210,8 @@ class RoomConsumer(JsonWebsocketConsumer):
         })
 
     def remove_player(self, event):
+        """Отправка информации об игре после того, как пользователь покинул игру.
+        """
         self.send_json(
         {
             'type': event["type"],

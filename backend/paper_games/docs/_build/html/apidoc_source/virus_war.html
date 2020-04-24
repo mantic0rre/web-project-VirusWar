@@ -70,6 +70,14 @@
 <li class="toctree-l2"><a class="reference internal" href="virus_war.serializers.html#module-virus_war.serializers">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="virus_war.tests.html">virus_war.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.tests.html#module-virus_war.tests.test_api_users">virus_war.tests.test_api_users module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.tests.html#module-virus_war.tests.test_game_game_engine">virus_war.tests.test_game_game_engine module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.tests.html#module-virus_war.tests.test_game_virus_war">virus_war.tests.test_game_virus_war module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.tests.html#module-virus_war.tests">Module contents</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="virus_war.views.html">virus_war.views package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="virus_war.views.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virus_war.views.html#module-virus_war.views.message_views">virus_war.views.message_views module</a></li>
@@ -87,9 +95,11 @@
 </div>
 <div class="section" id="module-virus_war.admin">
 <span id="virus-war-admin-module"></span><h2>virus_war.admin module<a class="headerlink" href="#module-virus_war.admin" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Регистрация моделей для админки.</p>
 </div>
 <div class="section" id="module-virus_war.apps">
 <span id="virus-war-apps-module"></span><h2>virus_war.apps module<a class="headerlink" href="#module-virus_war.apps" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Конфиг приложений Django.</p>
 <dl class="py class">
 <dt id="virus_war.apps.VirusWarConfig">
 <em class="property">class </em><code class="sig-prename descclassname">virus_war.apps.</code><code class="sig-name descname">VirusWarConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.apps.VirusWarConfig" title="Ссылка на это определение">¶</a></dt>
@@ -106,12 +116,15 @@
 </div>
 <div class="section" id="module-virus_war.permissions">
 <span id="virus-war-permissions-module"></span><h2>virus_war.permissions module<a class="headerlink" href="#module-virus_war.permissions" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Права доступа для API.</p>
 <dl class="py class">
 <dt id="virus_war.permissions.IsAuthorOrReadOnly">
 <em class="property">class </em><code class="sig-prename descclassname">virus_war.permissions.</code><code class="sig-name descname">IsAuthorOrReadOnly</code><a class="headerlink" href="#virus_war.permissions.IsAuthorOrReadOnly" title="Ссылка на это определение">¶</a></dt>
 <dd><blockquote>
 <div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.permissions.BasePermission</span></code></p>
 </div></blockquote>
+<p>Разрешить для запросов GET, HEAD или OPTIONS.
+Для остальных запросов проверка на пользователя.</p>
 <dl class="py method">
 <dt id="virus_war.permissions.IsAuthorOrReadOnly.has_object_permission">
 <code class="sig-name descname">has_object_permission</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">view</span></em>, <em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.permissions.IsAuthorOrReadOnly.has_object_permission" title="Ссылка на это определение">¶</a></dt>
@@ -126,19 +139,12 @@
 <dd><blockquote>
 <div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.permissions.BasePermission</span></code></p>
 </div></blockquote>
+<p>Разрешить для запросов GET, HEAD или OPTIONS.
+Для остальных запросов проверка на владельца комнаты.</p>
 <dl class="py method">
 <dt id="virus_war.permissions.IsOwnerOrReadOnly.has_object_permission">
 <code class="sig-name descname">has_object_permission</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">view</span></em>, <em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.permissions.IsOwnerOrReadOnly.has_object_permission" title="Ссылка на это определение">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Параметры</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>request</strong> – </p></li>
-<li><p><strong>view</strong> – </p></li>
-<li><p><strong>obj</strong> – </p></li>
-</ul>
-</dd>
-</dl>
-<p>Returns:</p>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
 </dd></dl>
 
 </dd></dl>
@@ -146,15 +152,14 @@
 </div>
 <div class="section" id="module-virus_war.routing">
 <span id="virus-war-routing-module"></span><h2>virus_war.routing module<a class="headerlink" href="#module-virus_war.routing" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Маршрутизация для WebSocket.</p>
 </div>
 <div class="section" id="module-virus_war.urls">
 <span id="virus-war-urls-module"></span><h2>virus_war.urls module<a class="headerlink" href="#module-virus_war.urls" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Маршрутизация для HTTP.</p>
 </div>
 <div class="section" id="module-virus_war">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-virus_war" title="Ссылка на этот заголовок">¶</a></h2>
-<div class="section" id="id1">
-<h3>что-то тут 2222<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h3>
-</div>
 </div>
 </div>
 
@@ -186,6 +191,7 @@
 <li class="toctree-l4"><a class="reference internal" href="virus_war.game.html">virus_war.game package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="virus_war.models.html">virus_war.models package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="virus_war.serializers.html">virus_war.serializers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.tests.html">virus_war.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="virus_war.views.html">virus_war.views package</a></li>
 </ul>
 </li>
@@ -195,10 +201,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-virus_war.permissions">virus_war.permissions module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-virus_war.routing">virus_war.routing module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#module-virus_war.urls">virus_war.urls module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-virus_war">Module contents</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">что-то тут 2222</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-virus_war">Module contents</a></li>
 </ul>
 </li>
 </ul>

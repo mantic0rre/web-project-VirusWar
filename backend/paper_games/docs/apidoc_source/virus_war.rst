@@ -11,6 +11,7 @@ Subpackages
    virus_war.game
    virus_war.models
    virus_war.serializers
+   virus_war.tests
    virus_war.views
 
 Submodules

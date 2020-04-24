@@ -1,3 +1,5 @@
+"""Маршрутизация для HTTP.
+"""
 from django.urls import path
 from virus_war.views import *
 

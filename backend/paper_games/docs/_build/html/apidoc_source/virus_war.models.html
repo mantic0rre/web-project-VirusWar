@@ -40,6 +40,7 @@
 </div>
 <div class="section" id="module-virus_war.models.message">
 <span id="virus-war-models-message-module"></span><h2>virus_war.models.message module<a class="headerlink" href="#module-virus_war.models.message" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Сообщение в чате.</p>
 <dl class="py class">
 <dt id="virus_war.models.message.Message">
 <em class="property">class </em><code class="sig-prename descclassname">virus_war.models.message.</code><code class="sig-name descname">Message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">room</span></em>, <em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="n">content</span></em>, <em class="sig-param"><span class="n">datetime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.models.message.Message" title="Ссылка на это определение">¶</a></dt>
@@ -84,7 +85,27 @@ object the first time, the query is executed.</p>
 <dl class="py method">
 <dt id="virus_war.models.message.Message.get_portion">
 <em class="property">static </em><code class="sig-name descname">get_portion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">room</span></em>, <em class="sig-param"><span class="n">portion_num</span></em>, <em class="sig-param"><span class="n">portion_size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.models.message.Message.get_portion" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Получить порцию сообщений.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Функция необходима для динамической подгрузки сообщений в чате комнаты.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>room</strong> – ссылка на комнату.</p></li>
+<li><p><strong>portion_num</strong> (<em>int</em>) – Номер порции. Должен быть &gt;= 0.</p></li>
+<li><p><strong>portion_size</strong> (<em>int</em>) – Размер порции. Должен быть &gt; 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p>Список сообщений.</p>
+</dd>
+<dt class="field-odd">Исключение</dt>
+<dd class="field-odd"><p><strong>ValidationError</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.models.message.Message.get_previous_by_datetime">
@@ -144,6 +165,7 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 </div>
 <div class="section" id="module-virus_war.models.room">
 <span id="virus-war-models-room-module"></span><h2>virus_war.models.room module<a class="headerlink" href="#module-virus_war.models.room" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Игровая комната.</p>
 <dl class="py class">
 <dt id="virus_war.models.room.Room">
 <em class="property">class </em><code class="sig-prename descclassname">virus_war.models.room.</code><code class="sig-name descname">Room</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">max_players</span></em>, <em class="sig-param"><span class="n">height</span></em>, <em class="sig-param"><span class="n">width</span></em>, <em class="sig-param"><span class="n">password</span></em>, <em class="sig-param"><span class="n">owner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.models.room.Room" title="Ссылка на это определение">¶</a></dt>
@@ -169,7 +191,33 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 <dl class="py method">
 <dt id="virus_war.models.room.Room.filter_by_parameters">
 <em class="property">static </em><code class="sig-name descname">filter_by_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="n">starred</span></em>, <em class="sig-param"><span class="n">hide_empty</span></em>, <em class="sig-param"><span class="n">hide_busy</span></em>, <em class="sig-param"><span class="n">search</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.models.room.Room.filter_by_parameters" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Фильт комнат для лобби по параметрам.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> – ссылка на пользователя</p></li>
+<li><p><strong>starred</strong> (<em>bool</em>) – Показать избранные комнаты.</p></li>
+<li><p><strong>hide_empty</strong> (<em>bool</em>) – Скрыть пустые комнтаны.</p></li>
+<li><p><strong>hide_busy</strong> (<em>bool</em>) – Скрыть заполненные команты.</p></li>
+<li><p><strong>search</strong> (<em>str</em>) – Текст поиска комнаты по её названию.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Приоритет параметров:</p>
+<ol class="arabic simple">
+<li><p>search. Если аргумент определен, остальные параметры игнорируются.</p></li>
+<li><p>starred. Если аргумент определен, остальные параметры игнорируются.</p></li>
+<li><p>Учёт всех остальных параметров.</p></li>
+</ol>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p>Список комнат.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt id="virus_war.models.room.Room.height">
@@ -287,6 +335,7 @@ object the first time, the query is executed.</p>
 </div>
 <div class="section" id="module-virus_war.models.starred_rooms">
 <span id="virus-war-models-starred-rooms-module"></span><h2>virus_war.models.starred_rooms module<a class="headerlink" href="#module-virus_war.models.starred_rooms" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Избранные комнаты.</p>
 <dl class="py class">
 <dt id="virus_war.models.starred_rooms.StarredRooms">
 <em class="property">class </em><code class="sig-prename descclassname">virus_war.models.starred_rooms.</code><code class="sig-name descname">StarredRooms</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="n">room</span></em>, <em class="sig-param"><span class="n">datetime</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.models.starred_rooms.StarredRooms" title="Ссылка на это определение">¶</a></dt>
@@ -384,6 +433,7 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 </div>
 <div class="section" id="module-virus_war.models">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-virus_war.models" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Пакет для моделей ORM.</p>
 </div>
 </div>
 
@@ -422,6 +472,7 @@ one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="virus_war.serializers.html">virus_war.serializers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.tests.html">virus_war.tests package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="virus_war.views.html">virus_war.views package</a></li>
 </ul>
 </li>
