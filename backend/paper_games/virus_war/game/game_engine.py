@@ -12,6 +12,12 @@ POS_NO_READY = 8
 
 
 class State(object):
+    """Состояние игры.
+
+    Args:
+        code (int): Код состояния игры.
+        data (dict): Словарь, содержащий данные о текущем состоянии игры.
+    """
     def __init__(self, code, data):
         state = {}
         state['code'] = code
@@ -24,12 +30,30 @@ class State(object):
 
 
 class Engine(object):
+    """Движок игры. Хранилище игр в RAM.
+
+    Note:
+        Любое действие в игре возвращает State.
+    """
     def __init__(self):
-        # === RAM storage ===
         self.__running_games = dict()
         self.__ready_players = dict()
 
     def readiness(self, room, user, figure):
+        """Подтвердить готовность играть. Занять позицию.
+
+        Args:
+            room: Ссылка на комнату.
+            user: Ссылка на пользователя.
+            figure (int): Номер фигуры.
+
+        Returns:
+            State: \n
+            * 'code': Код состояния игры.
+            * 'data': \n
+                * 'ready_players' (dict): Список готовых игроков.
+                * 'dirty' (bool): Флаг изменений.
+        """
         RunningGames = self.__running_games
         ReadyPlayers = self.__ready_players
         username = user.username
@@ -72,12 +96,35 @@ class Engine(object):
         return State(POS_DENIED, {'ready_players': ready_players, 'dirty': False})
 
     def start(self, room_id):
+        """Инициирование начала игры.
+
+        Args:
+            room_id (int): Номер комнаты.
+
+        Returns:
+            State: \n
+            * 'code': Код состояния игры.
+            * 'data': \n
+                * 'cur_figure' (int): Номер текущей фигуры.
+        """
         game = self.__running_games.get(room_id)
         if game:
             return State(GAME_IS_ON, {'cur_figure': game.cur_figure})
         return State(GAME_IS_NOT_ON, {'cur_figure': None})
 
     def game_status(self, room_id):
+        """Получить информацию об игре.
+
+        Args:
+            room_id (int): Идентификатор комнаты.
+
+        Returns:
+            State: \n
+            * 'code': Код состояния игры.
+            * 'data': \n
+                * 'board' (list of list): Матрица игрового поля.
+                * 'ready_players' (dict): Список готовых игроков.
+        """
         game = self.__running_games.get(room_id)
         ready_players = self.__ready_players.get(room_id)
         if game:
@@ -85,6 +132,23 @@ class Engine(object):
         return State(GAME_IS_NOT_ON, {'board': None, 'ready_players': ready_players})
 
     def take_move(self, room_id, i, j):
+        """Совершить ход.
+
+        Args:
+            room_id (int): Идентификатор комнаты.
+            i (int): Номер строки игрового поля.
+            j (int): Номер столбца игрового поля.
+
+        Returns:
+            State: \n
+            * 'code': Код состояния игры.
+            * 'data': \n
+                * 'is_implemented' (bool): Была ли изменена матрица.
+                * 'cell' (int): Значение клетки, в которую был совершен ход.
+                * 'cur_figure' (int): Номер фигуры, чей ход.
+                * 'ready_players' (dict): Список готовых игроков (игроков в игре).
+                * 'dirty' (bool): Флаг изменений.
+        """
         game = self.__running_games.get(room_id)
         players = self.__ready_players.get(room_id)
         if game:
@@ -112,6 +176,20 @@ class Engine(object):
         return State(GAME_IS_NOT_ON, {'is_implemented': None, 'cell': None, 'cur_figure': None, 'ready_players': None, 'dirty': None})
 
     def remove_player(self, room_id, username):
+        """Удалить игрока.
+
+        Args:
+            room_id (int): Идентификатор комнаты.
+            username (str): Уникальное имя пользователя.
+
+        Returns:
+            State: \n
+            * 'code': Код состояния игры.
+            * 'data': \n
+                * 'ready_players' (dict): Список готовых игроков (игроков в игре).
+                * 'cur_figure' (int): Номер фигуры, чей ход.
+                * 'dirty' (bool): Флаг изменений.
+        """
         game = self.__running_games.get(room_id)
         players = self.__ready_players.get(room_id)
         if players:
@@ -129,6 +207,15 @@ class Engine(object):
         return State(GAME_IS_NOT_ON, {'ready_players': players, 'cur_figure': None, 'dirty': None})
 
     def games_info(self):
+        """Получить информацию об играх.
+
+        Returns:
+            dict: \n
+            * key (int): Идентификатор комнаты.
+            * value (dict): \n
+                * 'number_of_players' (int): Количество готовых игроков.
+                * 'game_is_on' (bool): Флаг идущей игры.
+        """
         ready_players = self.__ready_players
         ret = {}
         for room_id in ready_players:

@@ -1,3 +1,5 @@
+"""Корневая конфигурация маршрутизации для Django Channels.
+"""
 from channels.routing import ProtocolTypeRouter, URLRouter
 import virus_war.routing
 from .middleware import TokenAuthMiddlewareStack

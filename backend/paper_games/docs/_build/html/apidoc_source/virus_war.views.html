@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>virus_war.views package &#8212; документация Война Вирусов </title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="prev" title="virus_war.tests package" href="virus_war.tests.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="virus-war-views-package">
+<h1>virus_war.views package<a class="headerlink" href="#virus-war-views-package" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="module-virus_war.views.message_views">
+<span id="virus-war-views-message-views-module"></span><h2>virus_war.views.message_views module<a class="headerlink" href="#module-virus_war.views.message_views" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt id="virus_war.views.message_views.MessageListCreate">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.views.message_views.</code><code class="sig-name descname">MessageListCreate</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.message_views.MessageListCreate" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.ListCreateAPIView</span></code></p>
+</div></blockquote>
+<dl class="py method">
+<dt id="virus_war.views.message_views.MessageListCreate.get_queryset">
+<code class="sig-name descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.message_views.MessageListCreate.get_queryset" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Get the list of items for this view.
+This must be an iterable, and may be a queryset.
+Defaults to using <cite>self.queryset</cite>.</p>
+<p>This method should always be used rather than accessing <cite>self.queryset</cite>
+directly, as <cite>self.queryset</cite> gets evaluated only once, and those results
+are cached for all subsequent requests.</p>
+<p>You may want to override this if you need to provide different
+querysets depending on the incoming request.</p>
+<p>(Eg. return a list of items that is specific to the user)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="virus_war.views.message_views.MessageListCreate.perform_create">
+<code class="sig-name descname">perform_create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">serializer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.message_views.MessageListCreate.perform_create" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.message_views.MessageListCreate.permission_classes">
+<code class="sig-name descname">permission_classes</code><em class="property"> = [&lt;class 'rest_framework.permissions.IsAuthenticated'&gt;]</em><a class="headerlink" href="#virus_war.views.message_views.MessageListCreate.permission_classes" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.message_views.MessageListCreate.serializer_class">
+<code class="sig-name descname">serializer_class</code><a class="headerlink" href="#virus_war.views.message_views.MessageListCreate.serializer_class" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="virus_war.serializers.html#virus_war.serializers.message_serializer.MessageSerializer" title="virus_war.serializers.message_serializer.MessageSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">virus_war.serializers.message_serializer.MessageSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="virus_war.views.message_views.MessageRetrieveUpdateDestroy">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.views.message_views.</code><code class="sig-name descname">MessageRetrieveUpdateDestroy</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.message_views.MessageRetrieveUpdateDestroy" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.RetrieveUpdateDestroyAPIView</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt id="virus_war.views.message_views.MessageRetrieveUpdateDestroy.permission_classes">
+<code class="sig-name descname">permission_classes</code><em class="property"> = [&lt;class 'virus_war.permissions.IsAuthorOrReadOnly'&gt;, &lt;class 'rest_framework.permissions.IsAuthenticated'&gt;]</em><a class="headerlink" href="#virus_war.views.message_views.MessageRetrieveUpdateDestroy.permission_classes" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.message_views.MessageRetrieveUpdateDestroy.queryset">
+<code class="sig-name descname">queryset</code><a class="headerlink" href="#virus_war.views.message_views.MessageRetrieveUpdateDestroy.queryset" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.message_views.MessageRetrieveUpdateDestroy.serializer_class">
+<code class="sig-name descname">serializer_class</code><a class="headerlink" href="#virus_war.views.message_views.MessageRetrieveUpdateDestroy.serializer_class" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="virus_war.serializers.html#virus_war.serializers.message_serializer.MessageSerializer" title="virus_war.serializers.message_serializer.MessageSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">virus_war.serializers.message_serializer.MessageSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-virus_war.views.room_views">
+<span id="virus-war-views-room-views-module"></span><h2>virus_war.views.room_views module<a class="headerlink" href="#module-virus_war.views.room_views" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt id="virus_war.views.room_views.RoomListCreate">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.views.room_views.</code><code class="sig-name descname">RoomListCreate</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.room_views.RoomListCreate" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.ListCreateAPIView</span></code></p>
+</div></blockquote>
+<dl class="py method">
+<dt id="virus_war.views.room_views.RoomListCreate.get_queryset">
+<code class="sig-name descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.room_views.RoomListCreate.get_queryset" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Get the list of items for this view.
+This must be an iterable, and may be a queryset.
+Defaults to using <cite>self.queryset</cite>.</p>
+<p>This method should always be used rather than accessing <cite>self.queryset</cite>
+directly, as <cite>self.queryset</cite> gets evaluated only once, and those results
+are cached for all subsequent requests.</p>
+<p>You may want to override this if you need to provide different
+querysets depending on the incoming request.</p>
+<p>(Eg. return a list of items that is specific to the user)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="virus_war.views.room_views.RoomListCreate.perform_create">
+<code class="sig-name descname">perform_create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">serializer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.room_views.RoomListCreate.perform_create" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.room_views.RoomListCreate.permission_classes">
+<code class="sig-name descname">permission_classes</code><em class="property"> = [&lt;class 'rest_framework.permissions.IsAuthenticated'&gt;]</em><a class="headerlink" href="#virus_war.views.room_views.RoomListCreate.permission_classes" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.room_views.RoomListCreate.serializer_class">
+<code class="sig-name descname">serializer_class</code><a class="headerlink" href="#virus_war.views.room_views.RoomListCreate.serializer_class" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="virus_war.serializers.html#virus_war.serializers.room_serializer.RoomSerializer" title="virus_war.serializers.room_serializer.RoomSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">virus_war.serializers.room_serializer.RoomSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="virus_war.views.room_views.RoomRetrieveUpdateDestroy">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.views.room_views.</code><code class="sig-name descname">RoomRetrieveUpdateDestroy</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.room_views.RoomRetrieveUpdateDestroy" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.RetrieveUpdateDestroyAPIView</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt id="virus_war.views.room_views.RoomRetrieveUpdateDestroy.permission_classes">
+<code class="sig-name descname">permission_classes</code><em class="property"> = [&lt;class 'virus_war.permissions.IsOwnerOrReadOnly'&gt;, &lt;class 'rest_framework.permissions.IsAuthenticated'&gt;]</em><a class="headerlink" href="#virus_war.views.room_views.RoomRetrieveUpdateDestroy.permission_classes" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.room_views.RoomRetrieveUpdateDestroy.queryset">
+<code class="sig-name descname">queryset</code><a class="headerlink" href="#virus_war.views.room_views.RoomRetrieveUpdateDestroy.queryset" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.room_views.RoomRetrieveUpdateDestroy.serializer_class">
+<code class="sig-name descname">serializer_class</code><a class="headerlink" href="#virus_war.views.room_views.RoomRetrieveUpdateDestroy.serializer_class" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="virus_war.serializers.html#virus_war.serializers.room_serializer.RoomSerializer" title="virus_war.serializers.room_serializer.RoomSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">virus_war.serializers.room_serializer.RoomSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-virus_war.views.starred_views">
+<span id="virus-war-views-starred-views-module"></span><h2>virus_war.views.starred_views module<a class="headerlink" href="#module-virus_war.views.starred_views" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt id="virus_war.views.starred_views.StarredCreate">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.views.starred_views.</code><code class="sig-name descname">StarredCreate</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.starred_views.StarredCreate" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.CreateAPIView</span></code></p>
+</div></blockquote>
+<dl class="py method">
+<dt id="virus_war.views.starred_views.StarredCreate.perform_create">
+<code class="sig-name descname">perform_create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">serializer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.starred_views.StarredCreate.perform_create" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.starred_views.StarredCreate.permission_classes">
+<code class="sig-name descname">permission_classes</code><em class="property"> = [&lt;class 'rest_framework.permissions.IsAuthenticated'&gt;]</em><a class="headerlink" href="#virus_war.views.starred_views.StarredCreate.permission_classes" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.starred_views.StarredCreate.serializer_class">
+<code class="sig-name descname">serializer_class</code><a class="headerlink" href="#virus_war.views.starred_views.StarredCreate.serializer_class" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="virus_war.serializers.html#virus_war.serializers.starred_serializer.StarredSerializer" title="virus_war.serializers.starred_serializer.StarredSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">virus_war.serializers.starred_serializer.StarredSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="virus_war.views.starred_views.StarredDestroy">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.views.starred_views.</code><code class="sig-name descname">StarredDestroy</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.starred_views.StarredDestroy" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.DestroyAPIView</span></code></p>
+</div></blockquote>
+<dl class="py method">
+<dt id="virus_war.views.starred_views.StarredDestroy.get_object">
+<code class="sig-name descname">get_object</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.starred_views.StarredDestroy.get_object" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Returns the object the view is displaying.</p>
+<p>You may want to override this if you need to provide non-standard
+queryset lookups.  Eg if objects are referenced using multiple
+keyword arguments in the url conf.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.starred_views.StarredDestroy.permission_classes">
+<code class="sig-name descname">permission_classes</code><em class="property"> = [&lt;class 'rest_framework.permissions.IsAuthenticated'&gt;]</em><a class="headerlink" href="#virus_war.views.starred_views.StarredDestroy.permission_classes" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.starred_views.StarredDestroy.queryset">
+<code class="sig-name descname">queryset</code><a class="headerlink" href="#virus_war.views.starred_views.StarredDestroy.queryset" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.starred_views.StarredDestroy.serializer_class">
+<code class="sig-name descname">serializer_class</code><a class="headerlink" href="#virus_war.views.starred_views.StarredDestroy.serializer_class" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="virus_war.serializers.html#virus_war.serializers.starred_serializer.StarredSerializer" title="virus_war.serializers.starred_serializer.StarredSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">virus_war.serializers.starred_serializer.StarredSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-virus_war.views.user_views">
+<span id="virus-war-views-user-views-module"></span><h2>virus_war.views.user_views module<a class="headerlink" href="#module-virus_war.views.user_views" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt id="virus_war.views.user_views.UserList">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.views.user_views.</code><code class="sig-name descname">UserList</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.user_views.UserList" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.ListAPIView</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt id="virus_war.views.user_views.UserList.queryset">
+<code class="sig-name descname">queryset</code><a class="headerlink" href="#virus_war.views.user_views.UserList.queryset" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.user_views.UserList.serializer_class">
+<code class="sig-name descname">serializer_class</code><a class="headerlink" href="#virus_war.views.user_views.UserList.serializer_class" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="virus_war.serializers.html#virus_war.serializers.user_serializer.UserSerializer" title="virus_war.serializers.user_serializer.UserSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">virus_war.serializers.user_serializer.UserSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="virus_war.views.user_views.UserRetrieve">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.views.user_views.</code><code class="sig-name descname">UserRetrieve</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.views.user_views.UserRetrieve" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.generics.RetrieveAPIView</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt id="virus_war.views.user_views.UserRetrieve.queryset">
+<code class="sig-name descname">queryset</code><a class="headerlink" href="#virus_war.views.user_views.UserRetrieve.queryset" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.views.user_views.UserRetrieve.serializer_class">
+<code class="sig-name descname">serializer_class</code><a class="headerlink" href="#virus_war.views.user_views.UserRetrieve.serializer_class" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="virus_war.serializers.html#virus_war.serializers.user_serializer.UserSerializer" title="virus_war.serializers.user_serializer.UserSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">virus_war.serializers.user_serializer.UserSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-virus_war.views">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-virus_war.views" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Пакет контроллеров Django.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Война Вирусов</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">paper_games</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="paper_games.html">paper_games package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="virus_war.html">virus_war package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="virus_war.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="virus_war.consumers.html">virus_war.consumers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.game.html">virus_war.game package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.models.html">virus_war.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.serializers.html">virus_war.serializers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.tests.html">virus_war.tests package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">virus_war.views package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-virus_war.views.message_views">virus_war.views.message_views module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-virus_war.views.room_views">virus_war.views.room_views module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-virus_war.views.starred_views">virus_war.views.starred_views module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-virus_war.views.user_views">virus_war.views.user_views module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-virus_war.views">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war.admin">virus_war.admin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war.apps">virus_war.apps module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war.permissions">virus_war.permissions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war.routing">virus_war.routing module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war.urls">virus_war.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">paper_games</a><ul>
+  <li><a href="virus_war.html">virus_war package</a><ul>
+      <li>Previous: <a href="virus_war.tests.html" title="предыдущая глава">virus_war.tests package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Артём, Анастасия.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/apidoc_source/virus_war.views.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

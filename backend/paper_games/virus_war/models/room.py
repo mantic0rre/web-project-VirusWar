@@ -1,3 +1,5 @@
+"""Игровая комната.
+"""
 from django.db import models
 
 
@@ -15,6 +17,24 @@ class Room(models.Model):
 
     @staticmethod
     def filter_by_parameters(user, starred, hide_empty, hide_busy, search):
+        """Фильт комнат для лобби по параметрам.
+
+        Args:
+            user: ссылка на пользователя
+            starred (bool): Показать избранные комнаты.
+            hide_empty (bool): Скрыть пустые комнтаны.
+            hide_busy (bool): Скрыть заполненные команты.
+            search (str): Текст поиска комнаты по её названию.
+
+        Note:
+             Приоритет параметров: \n
+             1) search. Если аргумент определен, остальные параметры игнорируются.
+             2) starred. Если аргумент определен, остальные параметры игнорируются.
+             3) Учёт всех остальных параметров.
+
+        Returns:
+            Список комнат.
+        """
         print(hide_empty, hide_busy, search)
         if search:
             return Room.objects.filter(name__contains=search)

@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>virus_war.serializers package &#8212; документация Война Вирусов </title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="virus_war.tests package" href="virus_war.tests.html" />
+    <link rel="prev" title="virus_war.models package" href="virus_war.models.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="virus-war-serializers-package">
+<h1>virus_war.serializers package<a class="headerlink" href="#virus-war-serializers-package" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="module-virus_war.serializers.message_serializer">
+<span id="virus-war-serializers-message-serializer-module"></span><h2>virus_war.serializers.message_serializer module<a class="headerlink" href="#module-virus_war.serializers.message_serializer" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt id="virus_war.serializers.message_serializer.MessageSerializer">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.serializers.message_serializer.</code><code class="sig-name descname">MessageSerializer</code><span class="sig-paren">(</span><em class="sig-param">instance=None</em>, <em class="sig-param">data=&lt;class 'rest_framework.fields.empty'&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.serializers.message_serializer.MessageSerializer" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.serializers.ModelSerializer</span></code></p>
+</div></blockquote>
+<dl class="py class">
+<dt id="virus_war.serializers.message_serializer.MessageSerializer.Meta">
+<em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#virus_war.serializers.message_serializer.MessageSerializer.Meta" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt id="virus_war.serializers.message_serializer.MessageSerializer.Meta.fields">
+<code class="sig-name descname">fields</code><em class="property"> = ['id', 'room', 'user', 'datetime', 'content']</em><a class="headerlink" href="#virus_war.serializers.message_serializer.MessageSerializer.Meta.fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.serializers.message_serializer.MessageSerializer.Meta.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#virus_war.serializers.message_serializer.MessageSerializer.Meta.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="virus_war.models.html#virus_war.models.message.Message" title="virus_war.models.message.Message"><code class="xref py py-class docutils literal notranslate"><span class="pre">virus_war.models.message.Message</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.serializers.message_serializer.MessageSerializer.Meta.read_only_fields">
+<code class="sig-name descname">read_only_fields</code><em class="property"> = ['datetime', 'room']</em><a class="headerlink" href="#virus_war.serializers.message_serializer.MessageSerializer.Meta.read_only_fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-virus_war.serializers.room_serializer">
+<span id="virus-war-serializers-room-serializer-module"></span><h2>virus_war.serializers.room_serializer module<a class="headerlink" href="#module-virus_war.serializers.room_serializer" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt id="virus_war.serializers.room_serializer.RoomSerializer">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.serializers.room_serializer.</code><code class="sig-name descname">RoomSerializer</code><span class="sig-paren">(</span><em class="sig-param">instance=None</em>, <em class="sig-param">data=&lt;class 'rest_framework.fields.empty'&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.serializers.room_serializer.RoomSerializer" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.serializers.ModelSerializer</span></code></p>
+</div></blockquote>
+<dl class="py class">
+<dt id="virus_war.serializers.room_serializer.RoomSerializer.Meta">
+<em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#virus_war.serializers.room_serializer.RoomSerializer.Meta" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt id="virus_war.serializers.room_serializer.RoomSerializer.Meta.fields">
+<code class="sig-name descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#virus_war.serializers.room_serializer.RoomSerializer.Meta.fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.serializers.room_serializer.RoomSerializer.Meta.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#virus_war.serializers.room_serializer.RoomSerializer.Meta.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="virus_war.models.html#virus_war.models.room.Room" title="virus_war.models.room.Room"><code class="xref py py-class docutils literal notranslate"><span class="pre">virus_war.models.room.Room</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.serializers.room_serializer.RoomSerializer.Meta.read_only_fields">
+<code class="sig-name descname">read_only_fields</code><em class="property"> = ['sub_users', 'is_starred']</em><a class="headerlink" href="#virus_war.serializers.room_serializer.RoomSerializer.Meta.read_only_fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="virus_war.serializers.room_serializer.RoomSerializer.create">
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">validated_data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.serializers.room_serializer.RoomSerializer.create" title="Ссылка на это определение">¶</a></dt>
+<dd><p>We have a bit of extra checking around this in order to provide
+descriptive messages when something goes wrong, but this method is
+essentially just:</p>
+<blockquote>
+<div><p>return ExampleModel.objects.create(<a href="#id1"><span class="problematic" id="id2">**</span></a>validated_data)</p>
+</div></blockquote>
+<p>If there are many to many fields present on the instance then they
+cannot be set until the model is instantiated, in which case the
+implementation is like so:</p>
+<blockquote>
+<div><p>example_relationship = validated_data.pop(„example_relationship“)
+instance = ExampleModel.objects.create(<a href="#id3"><span class="problematic" id="id4">**</span></a>validated_data)
+instance.example_relationship = example_relationship
+return instance</p>
+</div></blockquote>
+<p>The default implementation also does not handle nested relationships.
+If you want to support writable nested relationships you’ll need
+to write an explicit <cite>.create()</cite> method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="virus_war.serializers.room_serializer.RoomSerializer.get_is_starred">
+<code class="sig-name descname">get_is_starred</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">room</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.serializers.room_serializer.RoomSerializer.get_is_starred" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-virus_war.serializers.starred_serializer">
+<span id="virus-war-serializers-starred-serializer-module"></span><h2>virus_war.serializers.starred_serializer module<a class="headerlink" href="#module-virus_war.serializers.starred_serializer" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt id="virus_war.serializers.starred_serializer.StarredSerializer">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.serializers.starred_serializer.</code><code class="sig-name descname">StarredSerializer</code><span class="sig-paren">(</span><em class="sig-param">instance=None</em>, <em class="sig-param">data=&lt;class 'rest_framework.fields.empty'&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.serializers.starred_serializer.StarredSerializer" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.serializers.ModelSerializer</span></code></p>
+</div></blockquote>
+<dl class="py class">
+<dt id="virus_war.serializers.starred_serializer.StarredSerializer.Meta">
+<em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#virus_war.serializers.starred_serializer.StarredSerializer.Meta" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt id="virus_war.serializers.starred_serializer.StarredSerializer.Meta.fields">
+<code class="sig-name descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#virus_war.serializers.starred_serializer.StarredSerializer.Meta.fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.serializers.starred_serializer.StarredSerializer.Meta.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#virus_war.serializers.starred_serializer.StarredSerializer.Meta.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <a class="reference internal" href="virus_war.models.html#virus_war.models.starred_rooms.StarredRooms" title="virus_war.models.starred_rooms.StarredRooms"><code class="xref py py-class docutils literal notranslate"><span class="pre">virus_war.models.starred_rooms.StarredRooms</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.serializers.starred_serializer.StarredSerializer.Meta.read_only_fields">
+<code class="sig-name descname">read_only_fields</code><em class="property"> = ['datetime']</em><a class="headerlink" href="#virus_war.serializers.starred_serializer.StarredSerializer.Meta.read_only_fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-virus_war.serializers.user_serializer">
+<span id="virus-war-serializers-user-serializer-module"></span><h2>virus_war.serializers.user_serializer module<a class="headerlink" href="#module-virus_war.serializers.user_serializer" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt id="virus_war.serializers.user_serializer.UserSerializer">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.serializers.user_serializer.</code><code class="sig-name descname">UserSerializer</code><span class="sig-paren">(</span><em class="sig-param">instance=None</em>, <em class="sig-param">data=&lt;class 'rest_framework.fields.empty'&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.serializers.user_serializer.UserSerializer" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.serializers.ModelSerializer</span></code></p>
+</div></blockquote>
+<dl class="py class">
+<dt id="virus_war.serializers.user_serializer.UserSerializer.Meta">
+<em class="property">class </em><code class="sig-name descname">Meta</code><a class="headerlink" href="#virus_war.serializers.user_serializer.UserSerializer.Meta" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt id="virus_war.serializers.user_serializer.UserSerializer.Meta.fields">
+<code class="sig-name descname">fields</code><em class="property"> = ['id', 'username', 'created_rooms', 'starred_rooms']</em><a class="headerlink" href="#virus_war.serializers.user_serializer.UserSerializer.Meta.fields" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="virus_war.serializers.user_serializer.UserSerializer.Meta.model">
+<code class="sig-name descname">model</code><a class="headerlink" href="#virus_war.serializers.user_serializer.UserSerializer.Meta.model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>псевдоним класса <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-virus_war.serializers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-virus_war.serializers" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Пакет сериализаторов по моделям ORM.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Война Вирусов</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">paper_games</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="paper_games.html">paper_games package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="virus_war.html">virus_war package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="virus_war.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="virus_war.consumers.html">virus_war.consumers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.game.html">virus_war.game package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.models.html">virus_war.models package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">virus_war.serializers package</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-virus_war.serializers.message_serializer">virus_war.serializers.message_serializer module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-virus_war.serializers.room_serializer">virus_war.serializers.room_serializer module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-virus_war.serializers.starred_serializer">virus_war.serializers.starred_serializer module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-virus_war.serializers.user_serializer">virus_war.serializers.user_serializer module</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#module-virus_war.serializers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.tests.html">virus_war.tests package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.views.html">virus_war.views package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war.admin">virus_war.admin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war.apps">virus_war.apps module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war.permissions">virus_war.permissions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war.routing">virus_war.routing module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war.urls">virus_war.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="virus_war.html#module-virus_war">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">paper_games</a><ul>
+  <li><a href="virus_war.html">virus_war package</a><ul>
+      <li>Previous: <a href="virus_war.models.html" title="предыдущая глава">virus_war.models package</a></li>
+      <li>Next: <a href="virus_war.tests.html" title="следующая глава">virus_war.tests package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Артём, Анастасия.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/apidoc_source/virus_war.serializers.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>paper_games package &#8212; документация Война Вирусов </title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="virus_war package" href="virus_war.html" />
+    <link rel="prev" title="manage module" href="manage.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="paper-games-package">
+<h1>paper_games package<a class="headerlink" href="#paper-games-package" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="module-paper_games.middleware">
+<span id="paper-games-middleware-module"></span><h2>paper_games.middleware module<a class="headerlink" href="#module-paper_games.middleware" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Модуль для описания классов-посреников для запросов (middleware).</p>
+<dl class="py class">
+<dt id="paper_games.middleware.TokenAuthMiddleware">
+<em class="property">class </em><code class="sig-prename descclassname">paper_games.middleware.</code><code class="sig-name descname">TokenAuthMiddleware</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paper_games.middleware.TokenAuthMiddleware" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</div></blockquote>
+<p>Класс-посредник для авторизации с помощью токена в Django Channels 2, используемый в модуле routing.py.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="paper_games.middleware.TokenAuthMiddlewareStack">
+<code class="sig-prename descclassname">paper_games.middleware.</code><code class="sig-name descname">TokenAuthMiddlewareStack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inner</span></em><span class="sig-paren">)</span><a class="headerlink" href="#paper_games.middleware.TokenAuthMiddlewareStack" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-paper_games.routing">
+<span id="paper-games-routing-module"></span><h2>paper_games.routing module<a class="headerlink" href="#module-paper_games.routing" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Корневая конфигурация маршрутизации для Django Channels.</p>
+</div>
+<div class="section" id="module-paper_games.settings">
+<span id="paper-games-settings-module"></span><h2>paper_games.settings module<a class="headerlink" href="#module-paper_games.settings" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Конфигурация Django для проекта paper_games.</p>
+<p>Больше информации:
+<a class="reference external" href="https://docs.djangoproject.com/en/3.0/topics/settings/">https://docs.djangoproject.com/en/3.0/topics/settings/</a></p>
+</div>
+<div class="section" id="module-paper_games.urls">
+<span id="paper-games-urls-module"></span><h2>paper_games.urls module<a class="headerlink" href="#module-paper_games.urls" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Корневая конфигурация маршрутизации для HTTP-запросов.</p>
+<p class="rubric">Примеры</p>
+<p>Для авторизации используется библиотека djoser.</p>
+<blockquote>
+<div><p>Доступные конечные точки для api/auth/ :</p>
+<p>/users/</p>
+<p>/users/me/</p>
+<p>/users/confirm/</p>
+<p>/users/resend_activation/</p>
+<p>/users/set_password/</p>
+<p>/users/reset_password/</p>
+<p>/users/reset_password_confirm/</p>
+<p>/users/set_username/</p>
+<p>/users/reset_username/</p>
+<p>/users/reset_username_confirm/</p>
+<p>/token/login/ (Token Based Authentication)</p>
+<p>/token/logout/ (Token Based Authentication)</p>
+</div></blockquote>
+<p>Подробнее: <a class="reference external" href="https://djoser.readthedocs.io/en/latest/getting_started.html">https://djoser.readthedocs.io/en/latest/getting_started.html</a></p>
+</div>
+<div class="section" id="module-paper_games.wsgi">
+<span id="paper-games-wsgi-module"></span><h2>paper_games.wsgi module<a class="headerlink" href="#module-paper_games.wsgi" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Конфигурация WSGI для проекта paper_games.</p>
+<p>Больше информации:
+<a class="reference external" href="https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/">https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/</a></p>
+</div>
+<div class="section" id="module-paper_games">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-paper_games" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Пакет для настроек проекта.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Война Вирусов</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">paper_games</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">paper_games package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-paper_games.middleware">paper_games.middleware module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-paper_games.routing">paper_games.routing module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-paper_games.settings">paper_games.settings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-paper_games.urls">paper_games.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-paper_games.wsgi">paper_games.wsgi module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-paper_games">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.html">virus_war package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">paper_games</a><ul>
+      <li>Previous: <a href="manage.html" title="предыдущая глава">manage module</a></li>
+      <li>Next: <a href="virus_war.html" title="следующая глава">virus_war package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Артём, Анастасия.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/apidoc_source/paper_games.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,10 +1,14 @@
+"""Права доступа для API.
+"""
 from rest_framework import permissions
 
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
+    """
+    Разрешить для запросов GET, HEAD или OPTIONS.
+    Для остальных запросов проверка на владельца комнаты.
+    """
     def has_object_permission(self, request, view, obj):
-        # read permissions are allowed to any request,
-        # so we'll always allow GET, HEAD or OPTIONS requests.
         if request.method in permissions.SAFE_METHODS:
             return True
 
@@ -12,6 +16,10 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 
 
 class IsAuthorOrReadOnly(permissions.BasePermission):
+    """
+    Разрешить для запросов GET, HEAD или OPTIONS.
+    Для остальных запросов проверка на пользователя.
+    """
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True

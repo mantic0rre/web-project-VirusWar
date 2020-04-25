@@ -1,14 +1,9 @@
-"""
-WSGI config for paper_games project.
+"""Конфигурация WSGI для проекта paper_games.
 
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
+Больше информации:
 https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 """
-
 import os
-
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'paper_games.settings')

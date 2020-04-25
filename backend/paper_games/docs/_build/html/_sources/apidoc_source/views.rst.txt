@@ -1,0 +1,46 @@
+views package
+=============
+
+Submodules
+----------
+
+views.message\_views module
+---------------------------
+
+.. automodule:: views.message_views
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+views.room\_views module
+------------------------
+
+.. automodule:: views.room_views
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+views.starred\_views module
+---------------------------
+
+.. automodule:: views.starred_views
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+views.user\_views module
+------------------------
+
+.. automodule:: views.user_views
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: views
+   :members:
+   :undoc-members:
+   :show-inheritance:

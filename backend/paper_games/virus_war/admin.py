@@ -1,3 +1,5 @@
+"""Регистрация моделей для админки.
+"""
 from django.contrib import admin
 from virus_war.models import Room, StarredRooms, Message
 

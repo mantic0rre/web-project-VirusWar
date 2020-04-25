@@ -1,3 +1,5 @@
+"""Сообщение в чате.
+"""
 from django.db import models
 from rest_framework.exceptions import ValidationError
 
@@ -16,6 +18,22 @@ class Message(models.Model):
 
     @staticmethod
     def get_portion(room, portion_num, portion_size):
+        """Получить порцию сообщений.
+
+        Note:
+            Функция необходима для динамической подгрузки сообщений в чате комнаты.
+
+        Args:
+            room: ссылка на комнату.
+            portion_num (int): Номер порции. Должен быть >= 0.
+            portion_size (int): Размер порции. Должен быть > 0.
+
+        Returns:
+            Список сообщений.
+
+        Raises:
+            ValidationError:
+        """
         if not (portion_size or portion_num):
             return Message.objects.filter(room=room)
 

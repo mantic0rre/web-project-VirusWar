@@ -3,6 +3,26 @@ from copy import deepcopy
 
 
 class VirusWar(object):
+    """Игра 'Война Вирусов' на одном игровом поле.
+
+    Args:
+        h (int): Высота игрового поля. Количество клеток в высоту.
+        w (int): Ширина игрового поля. Количество клеток в ширину.
+        figure_order (list of int): Список с номерами фигур. Порядок фигур определяет последовательсноть ходов.
+
+    Note:
+        Нумерация фигур на игровом поле для 4 игроков соответсвтует написанию буквы z через углы прямоуольного поля.
+
+    Note:
+        Класс хранит состояние игры в виде целочисленной матрицы. Соглашение о заполнении матрицы: \n
+        * 0 - путая клетка;
+        * 1-9 - номер фигуры (игрока);
+        * 10-99 - перекрытие фигур: вторая цифра обозначает фигуру, которая перекрывает первую.
+
+    Todo:
+        * Текущая реализация предполагает до 4 игроков на прямоугольном поле.
+        * Можно увеличить максимальное количество игроков.
+    """
     def __init__(self, h, w, figure_order):
         self._h, self._w  = h, w
         self._board = [[0 for col in range(w)] for row in range(h)]
@@ -20,13 +40,29 @@ class VirusWar(object):
 
     @property
     def board(self):
+        """list of list: Матрица игрового поля."""
         return self._board
 
     @property
     def cur_figure(self):
+        """int: Номер текущей фигуры."""
         return self._cur_figure
 
     def take_move(self, i, j):
+        """Совершить ход.
+
+        Args:
+            i (int): Номер строки.
+            j (int): Номер столбца.
+
+        Returns:
+            dict: \n
+            * 'is_implemented' (bool): Была ли изменена матрица.
+            * 'cell' (int): Значение клетки, в которую был совершен ход.
+            * 'game_over' (bool): Флаг окончания игры.
+            * 'cur_figure' (int): Номер фигуры, чей ход.
+            * 'blocked' (list of int): Список с номерами фигур (игроков), которые полностью заблокированы и выходят из игры.
+        """
         if self.__enable_to_infect(i, j):
             self.__infect(i, j)
             if not self.__use_and_check_stamina():
@@ -36,6 +72,7 @@ class VirusWar(object):
         return {'is_implemented': False, 'cell': self._board[i][j], 'game_over': False, 'cur_figure': self.cur_figure, 'blocked': []}
 
     def enable_to_move(self):
+        """Проверка возможности совершить ход."""
         for i in range(self._h):
             for j in range(self._w):
                 if self.__enable_to_infect(i, j):
@@ -43,6 +80,16 @@ class VirusWar(object):
         return False
 
     def remove_figure(self, figure):
+        """Удаление игрока.
+
+        Args:
+            figure (int): Номер удаляемой фигуры (игрока).
+
+        Returns:
+            dict: \n
+            * 'game_over' (bool): Флаг окончания игры.
+            * 'cur_figure' (int): Номер фигуры, чей ход.
+        """
         assert (figure in self._figure_order)
         index_remove = self._figure_order.index(figure)
         self._figure_order.remove(figure)

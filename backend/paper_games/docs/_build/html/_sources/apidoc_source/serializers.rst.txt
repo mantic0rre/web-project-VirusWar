@@ -1,0 +1,46 @@
+serializers package
+===================
+
+Submodules
+----------
+
+serializers.message\_serializer module
+--------------------------------------
+
+.. automodule:: serializers.message_serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+serializers.room\_serializer module
+-----------------------------------
+
+.. automodule:: serializers.room_serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+serializers.starred\_serializer module
+--------------------------------------
+
+.. automodule:: serializers.starred_serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+serializers.user\_serializer module
+-----------------------------------
+
+.. automodule:: serializers.user_serializer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: serializers
+   :members:
+   :undoc-members:
+   :show-inheritance:
