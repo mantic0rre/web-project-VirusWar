@@ -46,35 +46,189 @@
 <dd><blockquote>
 <div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </div></blockquote>
+<p>Движок игры. Хранилище игр в RAM.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Любое действие в игре возвращает State.</p>
+</div>
 <dl class="py method">
 <dt id="virus_war.game.game_engine.Engine.game_status">
 <code class="sig-name descname">game_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">room_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.game.game_engine.Engine.game_status" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Получить информацию об игре.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>room_id</strong> (<em>int</em>) – Идентификатор комнаты.</p>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><ul>
+<li><p>„code“: Код состояния игры.</p></li>
+<li><p>“data“:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“board“ (list of list): Матрица игрового поля.</p></li>
+<li><p>“ready_players“ (dict): Список готовых игроков.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Тип результата</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#virus_war.game.game_engine.State" title="virus_war.game.game_engine.State">State</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.game.game_engine.Engine.games_info">
 <code class="sig-name descname">games_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.game.game_engine.Engine.games_info" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Получить информацию об играх.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p><ul>
+<li><p>key (int): Идентификатор комнаты.</p></li>
+<li><p>value (dict):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“number_of_players“ (int): Количество готовых игроков.</p></li>
+<li><p>“game_is_on“ (bool): Флаг идущей игры.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Тип результата</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.game.game_engine.Engine.readiness">
 <code class="sig-name descname">readiness</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">room</span></em>, <em class="sig-param"><span class="n">user</span></em>, <em class="sig-param"><span class="n">figure</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.game.game_engine.Engine.readiness" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Подтвердить готовность играть. Занять позицию.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>room</strong> – Ссылка на комнату.</p></li>
+<li><p><strong>user</strong> – Ссылка на пользователя.</p></li>
+<li><p><strong>figure</strong> (<em>int</em>) – Номер фигуры.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><ul>
+<li><p>„code“: Код состояния игры.</p></li>
+<li><p>“data“:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“ready_players“ (dict): Список готовых игроков.</p></li>
+<li><p>“dirty“ (bool): Флаг изменений.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Тип результата</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#virus_war.game.game_engine.State" title="virus_war.game.game_engine.State">State</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.game.game_engine.Engine.remove_player">
 <code class="sig-name descname">remove_player</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">room_id</span></em>, <em class="sig-param"><span class="n">username</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.game.game_engine.Engine.remove_player" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Удалить игрока.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>room_id</strong> (<em>int</em>) – Идентификатор комнаты.</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – Уникальное имя пользователя.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><ul>
+<li><p>„code“: Код состояния игры.</p></li>
+<li><p>“data“:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“ready_players“ (dict): Список готовых игроков (игроков в игре).</p></li>
+<li><p>“cur_figure“ (int): Номер фигуры, чей ход.</p></li>
+<li><p>“dirty“ (bool): Флаг изменений.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Тип результата</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#virus_war.game.game_engine.State" title="virus_war.game.game_engine.State">State</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.game.game_engine.Engine.start">
 <code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">room_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.game.game_engine.Engine.start" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Инициирование начала игры.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>room_id</strong> (<em>int</em>) – Номер комнаты.</p>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><ul>
+<li><p>„code“: Код состояния игры.</p></li>
+<li><p>“data“:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“cur_figure“ (int): Номер текущей фигуры.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Тип результата</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#virus_war.game.game_engine.State" title="virus_war.game.game_engine.State">State</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.game.game_engine.Engine.take_move">
 <code class="sig-name descname">take_move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">room_id</span></em>, <em class="sig-param"><span class="n">i</span></em>, <em class="sig-param"><span class="n">j</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.game.game_engine.Engine.take_move" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Совершить ход.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>room_id</strong> (<em>int</em>) – Идентификатор комнаты.</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – Номер строки игрового поля.</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Номер столбца игрового поля.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><ul>
+<li><p>„code“: Код состояния игры.</p></li>
+<li><p>“data“:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“is_implemented“ (bool): Была ли изменена матрица.</p></li>
+<li><p>“cell“ (int): Значение клетки, в которую был совершен ход.</p></li>
+<li><p>“cur_figure“ (int): Номер фигуры, чей ход.</p></li>
+<li><p>“ready_players“ (dict): Список готовых игроков (игроков в игре).</p></li>
+<li><p>“dirty“ (bool): Флаг изменений.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Тип результата</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#virus_war.game.game_engine.State" title="virus_war.game.game_engine.State">State</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -84,6 +238,15 @@
 <dd><blockquote>
 <div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </div></blockquote>
+<p>Состояние игры.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<em>int</em>) – Код состояния игры.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – Словарь, содержащий данные о текущем состоянии игры.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="virus_war.game.game_engine.State.dict">
 <em class="property">property </em><code class="sig-name descname">dict</code><a class="headerlink" href="#virus_war.game.game_engine.State.dict" title="Ссылка на это определение">¶</a></dt>
@@ -100,30 +263,104 @@
 <dd><blockquote>
 <div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </div></blockquote>
+<p>Игра „Война Вирусов“ на одном игровом поле.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h</strong> (<em>int</em>) – Высота игрового поля. Количество клеток в высоту.</p></li>
+<li><p><strong>w</strong> (<em>int</em>) – Ширина игрового поля. Количество клеток в ширину.</p></li>
+<li><p><strong>figure_order</strong> (<em>list of int</em>) – Список с номерами фигур. Порядок фигур определяет последовательсноть ходов.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Нумерация фигур на игровом поле для 4 игроков соответсвтует написанию буквы z через углы прямоуольного поля.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Класс хранит состояние игры в виде целочисленной матрицы. Соглашение о заполнении матрицы:</p>
+<ul class="simple">
+<li><p>0 - путая клетка;</p></li>
+<li><p>1-9 - номер фигуры (игрока);</p></li>
+<li><p>10-99 - перекрытие фигур: вторая цифра обозначает фигуру, которая перекрывает первую.</p></li>
+</ul>
+</div>
 <dl class="py method">
 <dt id="virus_war.game.virus_war.VirusWar.board">
 <em class="property">property </em><code class="sig-name descname">board</code><a class="headerlink" href="#virus_war.game.virus_war.VirusWar.board" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Матрица игрового поля.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of list</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.game.virus_war.VirusWar.cur_figure">
 <em class="property">property </em><code class="sig-name descname">cur_figure</code><a class="headerlink" href="#virus_war.game.virus_war.VirusWar.cur_figure" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Номер текущей фигуры.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.game.virus_war.VirusWar.enable_to_move">
 <code class="sig-name descname">enable_to_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.game.virus_war.VirusWar.enable_to_move" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Проверка возможности совершить ход.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.game.virus_war.VirusWar.remove_figure">
 <code class="sig-name descname">remove_figure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">figure</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.game.virus_war.VirusWar.remove_figure" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Удаление игрока.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>figure</strong> (<em>int</em>) – Номер удаляемой фигуры (игрока).</p>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>„game_over“ (bool): Флаг окончания игры.</p></li>
+<li><p>“cur_figure“ (int): Номер фигуры, чей ход.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Тип результата</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="virus_war.game.virus_war.VirusWar.take_move">
 <code class="sig-name descname">take_move</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i</span></em>, <em class="sig-param"><span class="n">j</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.game.virus_war.VirusWar.take_move" title="Ссылка на это определение">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Совершить ход.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Номер строки.</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Номер столбца.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>„is_implemented“ (bool): Была ли изменена матрица.</p></li>
+<li><p>“cell“ (int): Значение клетки, в которую был совершен ход.</p></li>
+<li><p>“game_over“ (bool): Флаг окончания игры.</p></li>
+<li><p>“cur_figure“ (int): Номер фигуры, чей ход.</p></li>
+<li><p>“blocked“ (list of int): Список с номерами фигур (игроков), которые полностью заблокированы и выходят из игры.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Тип результата</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
