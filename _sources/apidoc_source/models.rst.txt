@@ -1,0 +1,38 @@
+models package
+==============
+
+Submodules
+----------
+
+models.message module
+---------------------
+
+.. automodule:: models.message
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+models.room module
+------------------
+
+.. automodule:: models.room
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+models.starred\_rooms module
+----------------------------
+
+.. automodule:: models.starred_rooms
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: models
+   :members:
+   :undoc-members:
+   :show-inheritance:

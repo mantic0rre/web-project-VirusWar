@@ -1,0 +1,30 @@
+consumers package
+=================
+
+Submodules
+----------
+
+consumers.lobby\_consumer module
+--------------------------------
+
+.. automodule:: consumers.lobby_consumer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+consumers.room\_consumer module
+-------------------------------
+
+.. automodule:: consumers.room_consumer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: consumers
+   :members:
+   :undoc-members:
+   :show-inheritance:

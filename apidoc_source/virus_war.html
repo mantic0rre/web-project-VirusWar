@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>virus_war package &mdash; документация Война Вирусов </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="virus_war.consumers package" href="virus_war.consumers.html" />
+    <link rel="prev" title="paper_games package" href="paper_games.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Война Вирусов
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">paper_games</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manage.html">manage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="paper_games.html">paper_games package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">virus_war package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.consumers.html">virus_war.consumers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.game.html">virus_war.game package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.models.html">virus_war.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.serializers.html">virus_war.serializers package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.tests.html">virus_war.tests package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="virus_war.views.html">virus_war.views package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-virus_war.admin">virus_war.admin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-virus_war.apps">virus_war.apps module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-virus_war.permissions">virus_war.permissions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-virus_war.routing">virus_war.routing module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-virus_war.urls">virus_war.urls module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-virus_war">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Война Вирусов</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">paper_games</a> &raquo;</li>
+        
+      <li>virus_war package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/apidoc_source/virus_war.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="virus-war-package">
+<h1>virus_war package<a class="headerlink" href="#virus-war-package" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="virus_war.consumers.html">virus_war.consumers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.consumers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.consumers.html#module-virus_war.consumers.lobby_consumer">virus_war.consumers.lobby_consumer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.consumers.html#module-virus_war.consumers.room_consumer">virus_war.consumers.room_consumer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.consumers.html#module-virus_war.consumers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virus_war.game.html">virus_war.game package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.game.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.game.html#module-virus_war.game.game_engine">virus_war.game.game_engine module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.game.html#module-virus_war.game.virus_war">virus_war.game.virus_war module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.game.html#module-virus_war.game">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virus_war.models.html">virus_war.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.models.html#module-virus_war.models.message">virus_war.models.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.models.html#module-virus_war.models.room">virus_war.models.room module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.models.html#module-virus_war.models.starred_rooms">virus_war.models.starred_rooms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.models.html#module-virus_war.models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virus_war.serializers.html">virus_war.serializers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.serializers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.serializers.html#module-virus_war.serializers.message_serializer">virus_war.serializers.message_serializer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.serializers.html#module-virus_war.serializers.room_serializer">virus_war.serializers.room_serializer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.serializers.html#module-virus_war.serializers.starred_serializer">virus_war.serializers.starred_serializer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.serializers.html#module-virus_war.serializers.user_serializer">virus_war.serializers.user_serializer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.serializers.html#module-virus_war.serializers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virus_war.tests.html">virus_war.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.tests.html#module-virus_war.tests.test_api_users">virus_war.tests.test_api_users module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.tests.html#module-virus_war.tests.test_game_game_engine">virus_war.tests.test_game_game_engine module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.tests.html#module-virus_war.tests.test_game_virus_war">virus_war.tests.test_game_virus_war module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.tests.html#module-virus_war.tests">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virus_war.views.html">virus_war.views package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.views.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.views.html#module-virus_war.views.message_views">virus_war.views.message_views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.views.html#module-virus_war.views.room_views">virus_war.views.room_views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.views.html#module-virus_war.views.starred_views">virus_war.views.starred_views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.views.html#module-virus_war.views.user_views">virus_war.views.user_views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virus_war.views.html#module-virus_war.views">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+<div class="section" id="module-virus_war.admin">
+<span id="virus-war-admin-module"></span><h2>virus_war.admin module<a class="headerlink" href="#module-virus_war.admin" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Регистрация моделей для админки.</p>
+</div>
+<div class="section" id="module-virus_war.apps">
+<span id="virus-war-apps-module"></span><h2>virus_war.apps module<a class="headerlink" href="#module-virus_war.apps" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Конфиг приложений Django.</p>
+<dl class="py class">
+<dt id="virus_war.apps.VirusWarConfig">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.apps.</code><code class="sig-name descname">VirusWarConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.apps.VirusWarConfig" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt id="virus_war.apps.VirusWarConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'virus_war'</em><a class="headerlink" href="#virus_war.apps.VirusWarConfig.name" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-virus_war.permissions">
+<span id="virus-war-permissions-module"></span><h2>virus_war.permissions module<a class="headerlink" href="#module-virus_war.permissions" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Права доступа для API.</p>
+<dl class="py class">
+<dt id="virus_war.permissions.IsAuthorOrReadOnly">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.permissions.</code><code class="sig-name descname">IsAuthorOrReadOnly</code><a class="headerlink" href="#virus_war.permissions.IsAuthorOrReadOnly" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.permissions.BasePermission</span></code></p>
+</div></blockquote>
+<p>Разрешить для запросов GET, HEAD или OPTIONS.
+Для остальных запросов проверка на пользователя.</p>
+<dl class="py method">
+<dt id="virus_war.permissions.IsAuthorOrReadOnly.has_object_permission">
+<code class="sig-name descname">has_object_permission</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">view</span></em>, <em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.permissions.IsAuthorOrReadOnly.has_object_permission" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="virus_war.permissions.IsOwnerOrReadOnly">
+<em class="property">class </em><code class="sig-prename descclassname">virus_war.permissions.</code><code class="sig-name descname">IsOwnerOrReadOnly</code><a class="headerlink" href="#virus_war.permissions.IsOwnerOrReadOnly" title="Ссылка на это определение">¶</a></dt>
+<dd><blockquote>
+<div><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">rest_framework.permissions.BasePermission</span></code></p>
+</div></blockquote>
+<p>Разрешить для запросов GET, HEAD или OPTIONS.
+Для остальных запросов проверка на владельца комнаты.</p>
+<dl class="py method">
+<dt id="virus_war.permissions.IsOwnerOrReadOnly.has_object_permission">
+<code class="sig-name descname">has_object_permission</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">view</span></em>, <em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#virus_war.permissions.IsOwnerOrReadOnly.has_object_permission" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Return <cite>True</cite> if permission is granted, <cite>False</cite> otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-virus_war.routing">
+<span id="virus-war-routing-module"></span><h2>virus_war.routing module<a class="headerlink" href="#module-virus_war.routing" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Маршрутизация для WebSocket.</p>
+</div>
+<div class="section" id="module-virus_war.urls">
+<span id="virus-war-urls-module"></span><h2>virus_war.urls module<a class="headerlink" href="#module-virus_war.urls" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Маршрутизация для HTTP.</p>
+</div>
+<div class="section" id="module-virus_war">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-virus_war" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="virus_war.consumers.html" class="btn btn-neutral float-right" title="virus_war.consumers package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="paper_games.html" class="btn btn-neutral float-left" title="paper_games package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Артём, Анастасия
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+game package
+============
+
+Submodules
+----------
+
+game.game\_engine module
+------------------------
+
+.. automodule:: game.game_engine
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+game.virus\_war module
+----------------------
+
+.. automodule:: game.virus_war
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: game
+   :members:
+   :undoc-members:
+   :show-inheritance:
