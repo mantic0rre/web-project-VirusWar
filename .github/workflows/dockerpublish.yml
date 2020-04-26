@@ -1,9 +1,9 @@
-name: API TESTING
+name: TESTING
 on: push
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build the stack
+      - name: Запуск тестов
         run: docker-compose up backend-test
